@@ -8,17 +8,42 @@ import db from '../firebase';
 
 export default function Home() {
 
-    const data = getData();
-    
+    let fetched = false;
+
+    const [allData, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredData, setFilteredData] = useState(data);
+    
+    function getData() {
+        const data = collection(db, "businesses");
+        let results = [];
+
+        if (!fetched) {
+            getDocs(data).then((dataSnapshot) => {
+                dataSnapshot.forEach((doc) => {
+                    results.push(doc.data());
+                })
+                setData(results);
+                console.log(allData);
+            });
+            fetched = true;
+        }
+    }
+
+    useEffect(() => {getData()});
 
     const handleSubmit = (event) => {
         setSearchTerm(event.target.value);
-        const filtered = data.filter((item) =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+
+        // console.log("search term" + searchTerm);
+
+        const filtered = allData.filter((item) => {
+            console.log(item.name);
+            console.log("search term" + searchTerm);
+            return item.name.toLowerCase().includes(searchTerm.toLowerCase());
+        });
         setFilteredData(filtered);
+        console.log("filtered");
+        console.log(filteredData);
     };
 
     return (
@@ -28,7 +53,11 @@ export default function Home() {
                 <input 
                     className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-1/2 text-center" 
                     placeholder="Enter key words to find your business."
-                    onSubmit={handleSubmit}>
+                    onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          handleSubmit(event);
+                        }
+                    }}>
                 </input>
                 {/* {filteredData.map((item) => (
                     <Business key={item.id} {...item} />
@@ -36,20 +65,5 @@ export default function Home() {
             </div>
         </div>
     );
-
-}
-   
-async function getData() {
-
-    const data = await collection(db, 'businesses');
-    const docs = getDocs(data);
-    
-    console.log(docs);
-
-    // const dataDocs = docs.map((doc) => doc.data);
-
-    // console.log(dataDocs[0].name);
-
-    return [];
 
 }
