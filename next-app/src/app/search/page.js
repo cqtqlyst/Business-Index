@@ -12,6 +12,7 @@ export default function Home() {
 
     const [allData, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
     
     function getData() {
         const data = collection(db, "businesses");
