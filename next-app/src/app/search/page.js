@@ -5,6 +5,7 @@ import {collection, getDocs, query} from "firebase/firestore";
 import Nav from "@/components/nav";
 import Business from "@/components/business";
 import db from '../firebase';
+import Head from 'next/head';
 
 export default function Home() {
 
@@ -45,16 +46,20 @@ export default function Home() {
         // update search term with the setSearchTerm react hook method
         setSearchTerm(event.target.value);
 
-        // use the .filter() method & an inline function to search through and 
+        // use the .filter() method & an inline function to search through and find the filtered data
         let filtered = allData.filter((item) => {
             return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
         });
 
+        // updates the filtered data field
         setFilteredData(filtered);
     };
 
     return (
         <div>
+            <Head>
+                <title>My Custom Page Title</title>
+            </Head>
             <Nav/>
             <div className="flex justify-center py-10">
                 <input 

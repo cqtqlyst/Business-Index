@@ -11,6 +11,9 @@ export default function Home() {
     
     return (
         <div>
+            <Head>
+                <title>My Custom Page Title</title>
+            </Head>
             <Nav/>
             <div>
                 <div className="container mx-auto py-20">

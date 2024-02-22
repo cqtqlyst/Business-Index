@@ -3,10 +3,17 @@
 import Image from "next/image";
 import Nav from "@/components/nav";
 import logo from "../../public/logo.jpg";
+import Head from "next/head";
 
 export default function Home() {
+
+
+
   return (
     <div>
+      <Head>
+        <title>My Custom Page Title</title>
+      </Head>
       <Nav/>
       <p className="flex justify-center text-7xl font-bold text-white py-20">What is Business Index?</p>
       <div className="flex justify-center items-center px-20">

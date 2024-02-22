@@ -17,8 +17,11 @@ export default function Nav() {
             <Link href="/enter" className="ml-40 hover:underline">
                 Enter 
             </Link>
+            <Link href="/help" className="ml-40 hover:underline">
+                Help
+            </Link>
             <button type="submit" className="ml-40 inline-flex items-center px-4 py-2 rounded-full border border-white hover:bg-white hover:text-black">
-                Login
+                Aayush Gaywala
             </button>
         </nav>
     );
