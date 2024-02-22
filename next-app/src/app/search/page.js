@@ -24,9 +24,9 @@ export default function Home() {
                     results.push(doc.data());
                 })
                 setData(results);
-                console.log(allData);
+                fetched = true;
             });
-            fetched = true;
+            console.log(allData);
         }
     }
 
@@ -38,9 +38,9 @@ export default function Home() {
         // console.log("search term" + searchTerm);
 
         const filtered = allData.filter((item) => {
-            console.log(item.name);
+            console.log("item.name" + item.name);
             console.log("search term" + searchTerm);
-            return item.name.toLowerCase().includes(searchTerm.toLowerCase());
+            return item.name.includes(searchTerm);
         });
         setFilteredData(filtered);
         console.log("filtered");
