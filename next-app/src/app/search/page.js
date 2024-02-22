@@ -8,46 +8,49 @@ import db from '../firebase';
 
 export default function Home() {
 
+    // react hooks for the different variables throughout the program
     const [fetched, setFetched] = useState(false);
     const [allData, setData] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     
+    // loads data into the allData variable
     function getData() {
-        const data = query(collection(db, "businesses"));
-        let results = [];
 
+        const data = query(collection(db, "businesses")); // get the collection of businesses
+        let results = []; // is a variable for holding the results stuff
+
+        // checks needed for not over querying the database with firebase
         if (allData == null && fetched == false) {
+
+            // we have now started fetching the data
             setFetched(true);
+
+            // use .then() to avoid issues with Promises
             getDocs(data).then((dataSnapshot) => {
+                // push the documents that we have into the array allData
                 dataSnapshot.forEach((doc) => {
                     results.push(doc.data());
                 })
-                setData(results);
+                setData(results); // sets the allData variable
             });
         }
-        console.log(allData);
     }
 
     useEffect(() => {getData()});
 
+    // function for handling when the user enters a keyword to search for businesses
     const handleSubmit = (event) => {
 
-        // console.log(event);
+        // update search term with the setSearchTerm react hook method
         setSearchTerm(event.target.value);
 
+        // use the .filter() method & an inline function to search through and 
         let filtered = allData.filter((item) => {
-
-            // console.log("item.name " + item.Name);
-            // console.log("search term " + searchTerm);
-
             return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
         });
 
         setFilteredData(filtered);
-
-        // console.log("filtered");
-        // console.log(filteredData);
     };
 
     return (
