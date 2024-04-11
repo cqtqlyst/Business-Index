@@ -46,10 +46,14 @@ export default function Home() {
         // update search term with the setSearchTerm react hook method
         setSearchTerm(event.target.value);
 
-        // use the .filter() method & an inline function to search through and find the filtered data
-        let filtered = allData.filter((item) => {
-            return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
-        });
+        let filtered = [];
+
+        if (allData != null) {
+            // use the .filter() method & an inline function to search through and find the filtered data
+            filtered = allData.filter((item) => {
+                return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
+            });
+        }
 
         // updates the filtered data field
         setFilteredData(filtered);
@@ -75,7 +79,8 @@ export default function Home() {
             <div className="justify-center container mx-auto flex flex-wrap py-20">
                 {filteredData.map((item) => (
                     <Business
-                    name={item.Name} website={item.Website} email={item.Email} address={item.Address}/>
+                    name={item.Name} website={item.Website} email={item.Email} 
+                    address={item.Address} service={item.serviceOffered} legal={item.legalStructure}/>
                 ))}
             </div>
         </div>
