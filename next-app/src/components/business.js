@@ -2,13 +2,11 @@ import genAI from "../app/gemini.js";
 import jsPDF from 'jspdf';
 import { useState } from "react";
 
-
 export default function Business(props) {
 
     const [loading, setLoading] = useState(false);
 
     const handleClick =  async () => {
-        console.log(performance.now());
         setLoading(true);
 
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -18,27 +16,104 @@ export default function Business(props) {
                         + " Services offered: " + props.service
                         + " Legal Structure: " + props.legal 
                         + "\n include statistics";
-      
+                        // + "\n The report must be in be written in html and able to be compiled as an html document which includes tags arond everything";
+        // console.log(prompt);
+
         const { totalTokens } = await model.countTokens(prompt);
-        console.log("Tokens count:", totalTokens);
       
         const result = await model.generateContent(prompt);
         const response = result.response;
-        const text = response.text();
+        var text = response.text();
+        console.log(text);
 
-        console.log(performance.now());
-
-        setLoading(false);
-        // console.log(text)
+        var res = text.replaceAll("*", "");
+        // console.log(res);
 
         const doc = new jsPDF();
-        doc.text(text, 5, 10);
+        const width = 80; // Adjust the width as needed for your content
+        const lines = splitLines(res, width);
+        let y = 10; // Initial y-coordinate for text placement
+        let x = 5;
+        let pageHeight = doc.internal.pageSize.getHeight(); // Get page height
+        // console.log("page height " + pageHeight);
+
+        console.log(lines);
+
+        for (const line of lines) {
+            // Check if line would go off the current page
+            if (y > pageHeight) {
+                doc.addPage(); // Add a new page if needed
+                y = 10; // Reset y-coordinate for new page
+            }
+            doc.text(line, x, y); // Add a horizontal margin of 5
+            y += 10; // Increase y-coordinate for each line
+        }
         doc.save("report.pdf");
 
-        console.log(performance.now());
+        setLoading(false);
+        // html2pdf
+        // const text = "<h1> hello </h1>";
+        // html2pdf(text);
+        // doc.save("report.pdf");
+
+        // jsPDF stuff
+        // const doc = new jsPDF();
+        // doc.text(text, 5, 10);
+        // doc.save("report.pdf");
 
     }
 
+    function splitLines(text, maxWidth) {
+
+        const lines = text.split(/\n/g);
+        // console.log(lines);
+
+        const updatedLines = [];
+
+        for (let line of lines) {
+            
+            if (line != "") {
+
+                // console.log(line);
+                const words = line.split(" ");
+                // console.log(words);
+                let startLine = "";
+                
+                for (let word of words) {
+                    const newLine = startLine + word + " ";
+
+                    if (newLine.length > maxWidth) {
+                        updatedLines.push(startLine);
+                        startLine = word + " ";
+                    } else {
+                        startLine = newLine;
+                    }
+                }
+
+                updatedLines.push(startLine);
+            }
+        }
+
+        return updatedLines;
+
+        // const lines = [];
+        // let line = "";
+        // const words = text.split(" ");
+      
+        // for (let word of words) {
+
+        //     const newLine = line + word + " ";
+        //     if (newLine.length > maxWidth || word.indexOf("\n") != -1) {
+        //         let finalizedLine = line.replaceAll(/\n/g, "");
+        //         lines.push(finalizedLine);
+        //         line = word + " ";
+        //     } else {
+        //         line = newLine;
+        //     }
+        // }
+        // lines.push(line);
+        // return lines;
+    }
 
 
     return (
