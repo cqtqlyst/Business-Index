@@ -72,7 +72,7 @@ export default function Home() {
             <Nav/>
             <div className="flex justify-center py-10">
                 <input 
-                    className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-3/4 text-center" 
+                    className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-3/4 text-center outline-none" 
                     placeholder="Enter key words to find your business."
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {

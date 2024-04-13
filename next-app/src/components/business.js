@@ -92,6 +92,7 @@ export default function Business(props) {
 
                 updatedLines.push(startLine);
             }
+            updatedLines.push("");
         }
 
         return updatedLines;
@@ -122,8 +123,9 @@ export default function Business(props) {
                 <a href={"https://" + props.website} target="_blank">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{props.name}</h5>
                     <p className="font-normal text-white dark:text-gray-400 py-2">The address is {props.address}.</p>
-                    <p className="font-normal text-white dark:text-gray-400 py-2">The email for the Director of Outreach at {props.name} is {props.email}.</p>
+                    <p className="font-normal text-white dark:text-gray-400 py-2">The email for an individual at {props.name} is {props.email}.</p>
                     <p className="font-normal text-white dark:text-gray-400 py-2">The service is {props.service}.</p>
+                    <p className="font-normal text-white dark:text-gray-400 py-2">To learn more about the website go to the business' website at {props.website}.</p>
                 </a>
                 <button
                         onClick={handleClick}
@@ -141,6 +143,28 @@ export default function Business(props) {
                         <span class="sr-only">Loading...</span>
                     </div>
                 ) : null}
+                <div className="flex py-5"> 
+                    <input
+                        type="checkbox"
+                        className="lg"
+                    />
+                    <p className="ml-4 text-xl">Include Reviews Data?</p>
+                </div>
+                <div className="flex py-5"> 
+                    <input
+                        type="checkbox"
+                        className="lg"
+                    />
+                    <p className="ml-4 text-xl">Include Sales Data?</p>
+                </div>
+                <div className="flex py-5"> 
+                    <input
+                        type="checkbox"
+                        className="lg"
+                    />
+                    <p className="ml-4 text-xl">Include Revenue Data?</p>
+                </div>
+                
             </div>
         </div>
 
