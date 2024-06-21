@@ -50,7 +50,13 @@ export default function Home() {
         if (allData != null) {
             // use the .filter() method & an inline function to search through and find the filtered data
             filtered = allData.filter((item) => {
-                return item.Name.toLowerCase().includes(event.target.value.toLowerCase());
+                try {
+                    return item.Name.toLowerCase().includes(event.target.value.toLowerCase());
+                }
+                catch {
+                    console.log(item)
+                    return false;
+                }
             });
         }
 

@@ -30,19 +30,22 @@ export default function Home() {
             alert('You have entered an invalid email address!');
             return
         }
+        
+        
 
         let business = {
-            name: inputs[0].value,
-            address: inputs[1].value,
-            services: inputs[2].value,
+            Address: inputs[1].value,
+            Email: inputs[7].value,
             legalStructure: inputs[3].value,
             NAICS: inputs[4].value,
-            employees: inputs[5].value,
-            website: inputs[6].value,
-            email: inputs[7].value
+            Name: inputs[0].value,
+            numEmployees: inputs[5].value,
+            serviceOffered: inputs[2].value,
+            Website: inputs[6].value,
         };
         
-        await addDoc(collection(db, "businesses"), business);
+        const nDoc = await addDoc(collection(db, "businesses"), business);
+        console.log("Document written with ID: ", nDoc.id);
         alert('You have successfully entered a business into the database!');
         form.reset();       
 
