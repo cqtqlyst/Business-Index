@@ -12,7 +12,6 @@ export default function Home() {
     // react hooks for the different variables throughout the program
     const [fetched, setFetched] = useState(false);
     const [allData, setData] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     
     // loads data into the allData variable
@@ -42,27 +41,22 @@ export default function Home() {
 
     // function for handling when the user enters a keyword to search for businesses
     const handleSubmit = (event) => {
-
+        
         // update search term with the setSearchTerm react hook method
-        setSearchTerm(event.target.value);
+        // setSearchTerm(event.target.value);
 
         let filtered = [];
 
         if (allData != null) {
             // use the .filter() method & an inline function to search through and find the filtered data
             filtered = allData.filter((item) => {
-                return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
+                return item.Name.toLowerCase().includes(event.target.value.toLowerCase());
             });
         }
 
         // updates the filtered data field
         setFilteredData(filtered);
     };
-
-    // let text = "hello \n goodbye";
-    // console.log(text);
-    // let newText = text.replaceAll(/\n/g, "");
-    // console.log(newText);
 
     return (
         <div>
@@ -75,8 +69,8 @@ export default function Home() {
                     className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-3/4 text-center outline-none" 
                     placeholder="Enter key words to find your business."
                     onKeyDown={(event) => {
-                        if (event.key === "Enter") {
-                          handleSubmit(event);
+                        if (event.key == "Enter") {
+                            handleSubmit(event);
                         }
                     }}>
                 </input>
