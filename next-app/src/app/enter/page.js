@@ -2,11 +2,51 @@
 
 import Nav from "@/components/nav";
 import Head from "next/head";
+import {collection, addDoc} from "firebase/firestore";
+import db from '../firebase';
 
 export default function Home() {
     
-    const handleSubmit = (event) => {
-        alert('You are missing multiple fields to enter a business into the database!');
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        let form = document.getElementById('myForm');
+        let inputs = form.getElementsByTagName('input');
+        let empty = false;
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == '') {
+                empty = true;
+            };
+        }
+        if (empty == true) {
+            alert('You are missing multiple fields to enter a business into the database!');
+            return
+        }
+
+        let email = inputs[7].value;
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('You have entered an invalid email address!');
+            return
+        }
+
+        let business = {
+            name: inputs[0].value,
+            address: inputs[1].value,
+            services: inputs[2].value,
+            legalStructure: inputs[3].value,
+            NAICS: inputs[4].value,
+            employees: inputs[5].value,
+            website: inputs[6].value,
+            email: inputs[7].value
+        };
+        
+        await addDoc(collection(db, "businesses"), business);
+        alert('You have successfully entered a business into the database!');
+        form.reset();
+        
+
+        
     };
     
     return (
