@@ -4,6 +4,7 @@ import Nav from "@/components/nav";
 import Head from "next/head";
 import {collection, addDoc} from "firebase/firestore";
 import db from '../firebase';
+import backupData from '../backup';
 
 export default function Home() {
     
@@ -43,10 +44,9 @@ export default function Home() {
         
         await addDoc(collection(db, "businesses"), business);
         alert('You have successfully entered a business into the database!');
-        form.reset();
-        
+        form.reset();       
 
-        
+        backupData();
     };
     
     return (
