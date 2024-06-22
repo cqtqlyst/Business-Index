@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const milanello = localFont({
   src: '../../public/fonts/milanello.otf',
+  weight: '200',
   display: 'swap',
 })
 
