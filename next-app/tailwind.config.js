@@ -13,6 +13,7 @@ module.exports = {
         'meloncholy': '#564F6F',
         'gray': '#4C495D',
         'ivory': '#D1D7E0',
+        'background-black': '#0f0f0f',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
