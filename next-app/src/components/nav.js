@@ -15,7 +15,7 @@ export default function Nav() {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <Image src={logo} className="h-16 w-16" alt="Logo"/>
-                    <span className="self-center text-4xl font-semibold whitespace-nowrap text-ivory">BusinessIndex</span>
+                    <span className="self-center text-4xl font-semibold whitespace-nowrap text-ivory md:hover:text-gray-400">BusinessIndex</span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ">
                     <button 

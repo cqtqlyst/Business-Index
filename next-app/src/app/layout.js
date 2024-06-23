@@ -11,7 +11,9 @@ const milanello = localFont({
 })
 
 const lato = Lato({
-  weight: '400',
+  weight: ['100', '300','400', '700', '900'],
+  variable: ['--font-lato-thin', '--font-lato-light', '--font-lato-normal', '--font-lato-bold', '--font-lato-black'],
+  style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
 })

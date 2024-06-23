@@ -131,7 +131,7 @@ export default function Business(props) {
                         onClick={handleClick}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xl rounded-full border border-white hover:bg-white hover:text-black px-4 py-2 mt-5"> 
+                        className="text-xl rounded-full border text-ivory border-white hover:bg-white hover:text-black px-4 py-2 mt-5"> 
                         Generate Report
                 </button>
                 {loading ? (
@@ -143,21 +143,21 @@ export default function Business(props) {
                         <span class="sr-only">Loading...</span>
                     </div>
                 ) : null}
-                <div className="flex py-5"> 
+                <div className="flex py-5 text-ivory"> 
                     <input
                         type="checkbox"
                         className="lg"
                     />
                     <p className="ml-4 text-xl">Include Reviews Data?</p>
                 </div>
-                <div className="flex py-5"> 
+                <div className="flex py-5 text-ivory"> 
                     <input
                         type="checkbox"
                         className="lg"
                     />
                     <p className="ml-4 text-xl">Include Sales Data?</p>
                 </div>
-                <div className="flex py-5"> 
+                <div className="flex py-5 text-ivory"> 
                     <input
                         type="checkbox"
                         className="lg"
