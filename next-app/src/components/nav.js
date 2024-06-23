@@ -6,6 +6,10 @@ import logo from "../../public/logo.jpg";
 
 export default function Nav() {
 
+    function handleLogin(event) {
+
+    }
+
     return (
         <nav className= "w-full z-20 top-0 start-0 mt-4 mb-4">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -14,7 +18,12 @@ export default function Nav() {
                     <span className="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">BusinessIndex</span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ">
-                    <button type="button" className="text-2xl border border-white font-medium rounded-lg px-4 py-2 text-center hover:bg-white hover:text-black">Aayush Gaywala</button>
+                    <button 
+                        type="button" 
+                        className="text-2xl border border-white font-medium rounded-lg px-4 py-2 text-center hover:bg-white hover:text-black"
+                        onClick={handleLogin}>
+                        Login
+                    </button>
                 </div>
                 <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                     <ul className="text-2xl flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
