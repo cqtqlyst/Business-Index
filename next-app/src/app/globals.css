@@ -17,10 +17,13 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  /* color: rgb(var(--foreground-rgb)); */
+  background-color: rgba(0, 0, 0, 0.98);
+  background-blend-mode: multiply;
+  background-image: url(../../public/images/nebula2.jpeg);
+  /* background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
