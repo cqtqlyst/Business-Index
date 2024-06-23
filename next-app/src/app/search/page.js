@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import {collection, getDocs, query} from "firebase/firestore";
 import Nav from "@/components/nav";
+import Footer from "@/components/footer";
 import Business from "@/components/business";
 import db from '../firebase';
 import Head from 'next/head';
+
 
 export default function Home() {
 
@@ -88,6 +90,7 @@ export default function Home() {
                     address={item.Address} service={item.serviceOffered} legal={item.legalStructure}/>
                 ))}
             </div>
+            <Footer/>
         </div>
     );
 
