@@ -18,7 +18,7 @@
 
 body {
   /* color: rgb(var(--foreground-rgb)); */
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
   background-blend-mode: multiply;
   background-image: url(../../public/images/nebula2.jpeg);
   /* background: linear-gradient(to bottom,

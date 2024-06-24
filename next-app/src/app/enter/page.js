@@ -115,7 +115,7 @@ export default function Home() {
                     </form>
                 </div>
             </div>
-            <footer/>
+            <Footer/>
         </div>
     );
 
