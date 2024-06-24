@@ -3,11 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/logo.jpg";
+import { useRouter } from 'next/navigation';
 
 export default function Nav() {
 
-    function handleLogin(event) {
+    const router = useRouter(); // Initialize useRouter hook
 
+    function handleLogin(event) {
+        event.preventDefault(); // Prevent default form submission behavior (if applicable)
+        useRouter.push('/login'); // Use `router.push` to redirect to the login page
     }
 
     return (
