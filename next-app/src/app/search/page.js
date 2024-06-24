@@ -73,15 +73,17 @@ export default function Home() {
             </Head> */}
             <Nav/>
             <div className="flex justify-center py-10">
-                <input 
-                    className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-3/4 text-center outline-none" 
-                    placeholder="Enter key words to find your business."
-                    onKeyDown={(event) => {
-                        if (event.key == "Enter") {
-                            handleSubmit(event);
-                        }
-                    }}>
-                </input>
+                <div className="block max-w-2xl p-6 bg-black border border-gray-200 rounded-lg shadow">
+                    <input 
+                        className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-3/4 text-center outline-none" 
+                        placeholder="Enter key words to find your business."
+                        onKeyDown={(event) => {
+                            if (event.key == "Enter") {
+                                handleSubmit(event);
+                            }
+                        }}>
+                    </input>
+                </div>
             </div>
             <div className="justify-center container mx-auto flex flex-wrap py-20">
                 {filteredData.map((item) => (
