@@ -1,6 +1,7 @@
 "use client"
 
 import logo from "../../public/logo.jpg";
+import logoremovebg from "../../public/logoremovebg.png";
 import Image from "next/image";
 
 export default function Footer() {
@@ -10,7 +11,7 @@ export default function Footer() {
                 <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="http://localhost:3000/" class="flex items-center">
-                    <Image src={logo} className="h-16 w-16" alt="Logo"/>
+                    <Image src={logoremovebg} className="h-16 w-16" alt="Logoremeovebg"/>
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BusinessIndex</span>
                     </a>
                 </div>
