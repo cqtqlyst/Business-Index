@@ -21,15 +21,13 @@ export default function Nav() {
                     <Image src={logo} className="h-16 w-16" alt="Logo"/>
                     <span className="self-center text-4xl font-semibold whitespace-nowrap text-ivory md:hover:text-gray-400">BusinessIndex</span>
                 </a>
-                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ">
+                <div className="flex md:order-2 md:space-x-5">
                     <button 
                         type="button" 
                         className="text-2xl text-ivory font-medium"
                         onClick={handleLogin}>
                         Login
                     </button>
-                </div>
-                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ">
                     <button 
                         type="button" 
                         className="text-2xl text-purple-500 border border-purple-500 font-medium rounded-lg px-4 py-2 text-center hover:bg-purple-500 hover:text-white"
