@@ -15,9 +15,9 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>My Custom Page Title</title>
-      </Head>
+      </Head> */}
       <Nav />
       <div className="flex">
         <div>
