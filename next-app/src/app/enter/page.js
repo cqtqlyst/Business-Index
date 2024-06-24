@@ -1,6 +1,7 @@
 "use client"
 
 import Nav from "@/components/nav";
+import Footer from "@/components/footer";
 import Head from "next/head";
 import {collection, addDoc} from "firebase/firestore";
 import db from '../firebase';
@@ -114,6 +115,7 @@ export default function Home() {
                     </form>
                 </div>
             </div>
+            <footer/>
         </div>
     );
 

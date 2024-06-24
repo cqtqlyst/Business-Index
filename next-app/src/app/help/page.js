@@ -1,6 +1,7 @@
 "use client"
 
 import Nav from "../../components/nav";
+import Footer from "@/components/footer";
 import genAI from "../gemini";
 import {useState} from 'react';
 
@@ -69,6 +70,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <footer/>
         </div>
 
     );
