@@ -8,14 +8,14 @@ import Business from "@/components/business";
 import db from '../firebase';
 import Head from 'next/head';
 
+
 export default function Home() {
 
     // react hooks for the different variables throughout the program
     const [fetched, setFetched] = useState(false);
     const [allData, setData] = useState(null);
     const [filteredData, setFilteredData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-
+    
     // loads data into the allData variable
     function getData() {
 
@@ -39,20 +39,23 @@ export default function Home() {
         }
     }
 
-    // useEffect(() => {getData()}); this was the code pre ai
-    useEffect(() => {
-        getData();
-    }, []);
+    useEffect(() => {getData()});
 
     // function for handling when the user enters a keyword to search for businesses
-    useEffect(() => {
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+
+        // update search term with the setSearchTerm react hook method
+        // setSearchTerm(event.target.value);
+
         let filtered = [];
 
         if (allData != null) {
             // use the .filter() method & an inline function to search through and find the filtered data
             filtered = allData.filter((item) => {
                 try {
-                    return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
+                    return item.Name.toLowerCase().includes(event.target.value.toLowerCase());
                 }
                 catch {
                     console.log(item)
@@ -63,32 +66,37 @@ export default function Home() {
 
         // updates the filtered data field
         setFilteredData(filtered);
-    }, [searchTerm, allData]);
+    };
 
     return (
         <div>
             <Nav/>
-                <form class="max-w-2xl mx-auto">
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </div>
-                        <input 
-                            type="search" id="default-search" 
-                            class="block w-full p-4 ps-10 text-sm text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900" placeholder="Search for businesses" required 
-                            value={searchTerm}
-                            onChange={(event) => setSearchTerm(event.target.value)}
-                        />
-                        <button type="search" class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm px-4 py-2 hover:bg-purple-700">Search</button>
+            <form class="max-w-2xl mx-auto">
+                <label class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
                     </div>
-                </form>
+                    <input 
+                        class="block w-full p-4 ps-10 text-sm text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900" placeholder="Search for businesses" 
+                        id="searchInput"
+                        onKeyDown={(event) => {
+                            if (event.key == "Enter") {
+                                handleSubmit(event);
+                            }
+                        }}
+                    />
+                    <button class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm px-4 py-2 hover:bg-purple-700"
+                        >
+                        Search
+                    </button>
+                </div>
+            </form>
             <div className="justify-center container mx-auto flex flex-wrap py-20">
                 {filteredData.map((item) => (
                     <Business
-                        // key={item.Name} // Assuming Name is unique, otherwise use a unique identifier(ai told me to add this line of code and idk if we need it/>
                         name={item.Name} website={item.Website} email={item.Email} 
                         address={item.Address} service={item.serviceOffered} legal={item.legalStructure}/>
                 ))}
@@ -96,4 +104,5 @@ export default function Home() {
             <Footer/>
         </div>
     );
+
 }
