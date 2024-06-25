@@ -29,7 +29,7 @@ export default function Nav() {
                 <div className="flex md:order-2 md:space-x-5">
                     <button 
                         type="button" 
-                        className="text-2xl text-ivory font-medium"
+                        className="text-2xl text-ivory font-medium md:hover:text-gray-400"
                         onClick={handleLogin}>
                         Login
                     </button>
