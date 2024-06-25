@@ -6,8 +6,20 @@ import Head from "next/head";
 import {collection, addDoc} from "firebase/firestore";
 import db from '../firebase';
 import backupData from '../backup';
+import { checkAuthState } from '../auth';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+        const user = await checkAuthState();
+        setUser(user);
+        };
+        fetchUser();
+    }, []);
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -55,83 +67,89 @@ export default function Home() {
     
     return (
         <div>
+            
             <Nav/>
             <div>
+            {user ? (
                 <div className="container mx-auto py-10">
-                    <form id="myForm" className="bg-black rounded-lg shadow-lg p-8 text-white font-mono">
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter the name of the business."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>  
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">  
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter the address of the business."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter what services the business offers."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter what legal structure the business has."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter what NAICS code the business falls under."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter the number of employees the business has."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter the website link of the business."
-                                    className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
-                            <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                                <input
-                                    type="text"
-                                    name="fieldName1"
-                                    placeholder="Enter the email for the business' individual."
-                                    className="overflow-wrap: break-words resize-none input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
-                                />
-                            </div>
+                <form id="myForm" className="bg-black rounded-lg shadow-lg p-8 text-white font-mono">
+                    <div className="flex flex-wrap gap-4 justify-center">
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter the name of the business."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
+                        </div>  
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">  
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter the address of the business."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
                         </div>
                         <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
-                            <button type="submit" className="flex justify-center w-64 py-20 text-5xl btn btn-primary mt-4 mx-auto rounded-full bg-black text-white font-mono" onClick={handleSubmit}>
-                                Submit
-                            </button>
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter what services the business offers."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
                         </div>
-                    </form>
-                </div>
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter what legal structure the business has."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
+                        </div>
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter what NAICS code the business falls under."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
+                        </div>
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter the number of employees the business has."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
+                        </div>
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter the website link of the business."
+                                className="input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
+                        </div>
+                        <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                            <input
+                                type="text"
+                                name="fieldName1"
+                                placeholder="Enter the email for the business' individual."
+                                className="overflow-wrap: break-words resize-none input input-bordered bg-black w-full max-w-md placeholder-white text-center focus:outline-white min-h-[80px] py-20"
+                            />
+                        </div>
+                    </div>
+                    <div className="block max-w-sm p-6 bg-black border border-gray-200 rounded-lg shadow">
+                        <button type="submit" className="flex justify-center w-64 py-20 text-5xl btn btn-primary mt-4 mx-auto rounded-full bg-black text-white font-mono" onClick={handleSubmit}>
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            ) : (
+                <p className="justify-center text-7xl font-black text-bright-purple px-20 pt-20">whoa you need to login please</p>
+            )}
+                
             </div>
             <Footer/>
         </div>
