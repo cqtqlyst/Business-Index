@@ -10,7 +10,9 @@ import Head from "next/head";
 export default function Home() {
 
   function handleGetStarted(event) {
+    event.preventDefault();
 
+    window.location.href = "/login";
   }
 
   return (
@@ -26,6 +28,7 @@ export default function Home() {
             Every minute counts. Stop wasting time trying to connect your high school with local businesses. Effortlessly catalog and discover the businesses that you need. Streamline your search with our user-friendly app.
           </p>
           <button 
+            onClick={handleGetStarted}
             type="button" 
             class="text-white mt-8 ml-20 bg-bright-purple hover:bg-meloncholy font-normal rounded-lg text-2xl px-5 py-2.5 me-2 mb-2 dark:bg-bright-purple dark:hover:bg-meloncholy">
             Get Started

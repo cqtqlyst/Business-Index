@@ -12,7 +12,7 @@ export default function Nav() {
         window.location.href = '/login'
     }
 
-    function handleSignup(event) {
+    function handleSignUp(event) {
         event.preventDefault();
         window.location.href = '/signup'
     }
@@ -34,7 +34,7 @@ export default function Nav() {
                     <button 
                         type="button" 
                         className="text-2xl text-purple-500 border border-purple-500 font-medium rounded-lg px-4 py-2 text-center hover:bg-purple-500 hover:text-white"
-                        onClick={handleSignup}>
+                        onClick={handleSignUp}>
                         Sign Up
                     </button>
                 </div>
