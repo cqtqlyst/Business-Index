@@ -11,9 +11,12 @@ export default function Nav() {
 
     function handleLogin(event) {
         event.preventDefault();
-        
-        console.log("Redirecting to login...");
         router.push('/login');
+    }
+
+    function handleSignup(event) {
+        event.preventDefault();
+        router.push('/signup');
     }
 
     return (
@@ -33,7 +36,7 @@ export default function Nav() {
                     <button 
                         type="button" 
                         className="text-2xl text-purple-500 border border-purple-500 font-medium rounded-lg px-4 py-2 text-center hover:bg-purple-500 hover:text-white"
-                        onClick={handleLogin}>
+                        onClick={handleSignup}>
                         Sign Up
                     </button>
                 </div>
