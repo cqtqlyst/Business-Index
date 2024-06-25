@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/logo.jpg";
-import { useRouter } from 'next/navigation'
 
 export default function Nav() {
 
@@ -11,12 +10,12 @@ export default function Nav() {
 
     function handleLogin(event) {
         event.preventDefault();
-        router.push('/login');
+        window.location.href = '/login'
     }
 
     function handleSignup(event) {
         event.preventDefault();
-        router.push('/signup');
+        window.location.href = '/signup'
     }
 
     return (
