@@ -2,23 +2,25 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import logoremovebg from "../../public/logoremovebg.png";
-import { redirect } from 'next/navigation'
+import logo from "../../public/logo.jpg";
+import { useRouter } from 'next/navigation'
 
 export default function Nav() {
 
+    const router = useRouter();
 
     function handleLogin(event) {
         event.preventDefault();
         
-        redirect('/login');
+        console.log("Redirecting to login...");
+        router.push('/login');
     }
 
     return (
         <nav className= "w-full z-20 top-0 start-0 mt-4 mb-4">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <Image src={logoremovebg} className="h-16 w-16" alt="Logoremovebg"/>
+                    <Image src={logo} className="h-16 w-16" alt="Logo"/>
                     <span className="self-center text-4xl font-semibold whitespace-nowrap text-ivory md:hover:text-gray-400">BusinessIndex</span>
                 </a>
                 <div className="flex md:order-2 md:space-x-5">
