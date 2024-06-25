@@ -59,7 +59,8 @@ export default function Nav() {
                     <button 
                         type="button" 
                         className="text-2xl text-ivory font-medium md:hover:text-gray-400"
-                        onClick={handleLogin}>
+                        // onClick={handleLogin}
+                        >
                         {user.email}
                     </button>
                     
