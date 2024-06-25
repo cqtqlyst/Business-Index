@@ -8,7 +8,6 @@ import Business from "@/components/business";
 import db from '../firebase';
 import Head from 'next/head';
 
-
 export default function Home() {
 
     // react hooks for the different variables throughout the program
@@ -69,17 +68,23 @@ export default function Home() {
     return (
         <div>
             <Nav/>
-            <div className="flex justify-center py-10">
-                <div className="block max-w-2xl p-6 bg-black border border-gray-200 rounded-lg shadow">
-                    <input 
-                        className="bg-black font-mono text-5xl placeholder-gray-300 text-white w-3/4 text-center outline-none" 
-                        placeholder="Enter key words to find your business."
-                        value={searchTerm}
-                        onChange={(event) => setSearchTerm(event.target.value)}
-                    >
-                    </input>
-                </div>
-            </div>
+                <form class="max-w-2xl mx-auto">
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input 
+                            type="search" id="default-search" 
+                            class="block w-full p-4 ps-10 text-sm text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900" placeholder="Search for businesses" required 
+                            value={searchTerm}
+                            onChange={(event) => setSearchTerm(event.target.value)}
+                        />
+                        <button type="search" class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm px-4 py-2 hover:bg-purple-700">Search</button>
+                    </div>
+                </form>
             <div className="justify-center container mx-auto flex flex-wrap py-20">
                 {filteredData.map((item) => (
                     <Business
@@ -91,5 +96,4 @@ export default function Home() {
             <Footer/>
         </div>
     );
-
 }
