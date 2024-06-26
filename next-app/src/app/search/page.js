@@ -128,6 +128,7 @@ export default function Home() {
                         address={item.Address} service={item.serviceOffered} legal={item.legalStructure}/>
                 ))}
             </div>
+            <div className="container py-40"></div>
             <Footer/>
         </div>
     );

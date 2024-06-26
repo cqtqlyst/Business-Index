@@ -30,7 +30,7 @@ export default function Home() {
           <button 
             onClick={handleGetStarted}
             type="button" 
-            class="text-white mt-8 mb-20 ml-20 bg-bright-purple hover:bg-meloncholy font-normal rounded-lg text-2xl px-5 py-2.5 me-2 dark:bg-bright-purple dark:hover:bg-meloncholy">
+            class="text-white mt-8 mb-20 ml-20 bg-bright-purple hover:bg-purple-500 font-normal rounded-lg text-2xl px-5 py-2.5 me-2">
             Get Started
           </button>
         </div>
