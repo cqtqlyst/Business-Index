@@ -42,22 +42,54 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex bg-meloncholy px-10 py-20">
+      <div className="flex px-16 py-40 flex-wrap">
         <div>
           <p className="text-ivory font-bold text-4xl py-5">
             Search for businesses
           </p>
           <p className="text-6xl text-regular-purple font-extrabold py-5">
-            Personalized businesses right at your fingertips
+            The right businesses at your fingertips
           </p>
+          <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+            <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+                <span>Individual configuration</span>
+            </li>
+            <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+                <span>No setup, or hidden fees</span>
+            </li>
+            <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+                <span>Team size: <span class="font-semibold text-gray-900 dark:text-white">1 developer</span></span>
+            </li>
+            <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+                <span>Premium support: <span class="font-semibold text-gray-900 dark:text-white">6 months</span></span>
+            </li>
+            <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+                <span>Free updates: <span class="font-semibold text-gray-900 dark:text-white">6 months</span></span>
+            </li>
+          </ul>
         </div>
-        <div className="pl-20">
+        <div className="flex-grow pr-5">
           <Image
+            className="justify-end float-right"
             width={400}
             src={searchImage}
           />
         </div>
-
       </div>
       <Footer />
     </div>
