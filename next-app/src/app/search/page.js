@@ -96,10 +96,10 @@ export default function Home() {
     };
 
     return (
-        <div>
+        <div className="">
             <Nav/>
-            <form className="max-w-2xl mx-auto">
-                <label class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <form className="max-w-2xl mx-auto py-10">
+                <label class="mb-2 font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -107,7 +107,7 @@ export default function Home() {
                         </svg>
                     </div>
                     <input 
-                        class="block w-full p-4 ps-10 text-sm text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900" placeholder="Search for businesses" 
+                        class="block w-full p-4 ps-10 text-xl text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900" placeholder="Search for businesses" 
                         ref={searchTermRef}
                         onKeyDown={(event) => {
                             if (event.key == "Enter") {
@@ -115,7 +115,7 @@ export default function Home() {
                             }
                         }}
                     />
-                    <button class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm px-4 py-2 hover:bg-purple-700"
+                    <button class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-xl px-4 py-2 hover:bg-purple-700"
                         onClick={handleSearch}>
                         Search
                     </button>
