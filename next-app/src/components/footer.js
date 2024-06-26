@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Footer() {
     return(
-        <footer class="bg-white dark:bg-purple-950"> {/* change background color*/}
+        <footer className="bg-white dark:bg-purple-950"> {/* change background color*/}
             <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
