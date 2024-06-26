@@ -121,7 +121,7 @@ export default function Home() {
                     </button>
                 </div>
             </form>
-            <div className="justify-center container mx-auto flex flex-wrap py-20">
+            <div className="flex flex-col flex-grow gap-y-24 justify-evenly container mx-auto py-20">
                 {filteredData.map((item) => (
                     <Business
                         name={item.Name} website={item.Website} email={item.Email} 
