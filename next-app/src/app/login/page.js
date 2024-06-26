@@ -62,7 +62,7 @@ export default function Home () {
                                                     <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
                                                 </svg>
                                             </div>
-                                            <input type="text" id="email-address-icon" 
+                                            <input type="text" id="email-address-icon" ref={logemailRef} 
                                             class="border text-gray-900 rounded-lg block w-full ps-10 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:none focus:border-blue-500" placeholder="name@company.com" required=""/>
                                         </div>
                                     </div>
