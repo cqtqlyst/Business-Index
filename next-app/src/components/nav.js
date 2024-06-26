@@ -73,9 +73,14 @@ export default function Nav() {
                             <li>
                                 <a href="/search" className="block py-2 px-3 rounded md:hover:text-gray-400">Search</a>
                             </li>
-                            <li>
+                            {
+                                user ? (
+                                    <li>
                                 <a href="/enter" className="block py-2 px-3 rounded md:hover:text-gray-400">Enter</a>
                             </li>
+                                ) : null    
+                            }
+                            
                             <li>
                                 <a href="/help" className="block py-2 px-3 rounded md:hover:text-gray-400">Help</a>
                             </li>
