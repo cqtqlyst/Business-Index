@@ -23,7 +23,8 @@ export default function Home() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        sessionStorage.setItem("useremail", user.email);
+        
+        sessionStorage.setItem("useremail", user.displayName);
         // ...
         console.log(sessionStorage.getItem("useremail"));
 
