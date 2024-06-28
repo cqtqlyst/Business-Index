@@ -186,7 +186,7 @@ export default function Business(props) {
                     <div class={activeTab === "about" ? "p-4 rounded-lg md:p-8" : "hidden"} id="about" role="tabpanel" aria-labelledby="about-tab">
                         <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{props.name}</h2>
                         <p class="mb-3 text-gray-500 dark:text-gray-400 text-lg">{props.description}</p>
-                        <a href={props.website} class="inline-flex items-center font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700">
+                        <a href={"https://" + props.website} class="inline-flex items-center font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700">
                             Visit their website
                             <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
@@ -198,18 +198,18 @@ export default function Business(props) {
                         <h2 class="text-xl py-3 font-semibold tracking-tight text-gray-400">The NAICS (North American Industry Classification System) code is {props.NAICS}. An NAICS code identifies a business's primary economic activity. Visit https://www.naics.com/ for the exact sector.</h2>
                     </div>
                     <div class={activeTab === "facts" ? "p-4 rounded-lg md:p-8" : "hidden"} id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
-                        <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
+                        <dl class="grid max-w-screen-xl grid-cols-2 gap-12 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8 text-center">
                             <div class="flex flex-col">
-                                <dt class="mb-2 text-3xl font-extrabold">73M+</dt>
-                                <dd class="text-gray-500 dark:text-gray-400">Developers</dd>
+                                <dt class="mb-2 text-3xl font-extrabold">{props.numEmployees}</dt>
+                                <dd class="text-gray-500 dark:text-gray-400">Employees</dd>
                             </div>
                             <div class="flex flex-col">
-                                <dt class="mb-2 text-3xl font-extrabold">100M+</dt>
-                                <dd class="text-gray-500 dark:text-gray-400">Public repositories</dd>
+                                <dt class="mb-2 text-3xl font-extrabold">${props.revenue}</dt>
+                                <dd class="text-gray-500 dark:text-gray-400">in Revenue Generated</dd>
                             </div>
                             <div class="flex flex-col">
-                                <dt class="mb-2 text-3xl font-extrabold">1000s</dt>
-                                <dd class="text-gray-500 dark:text-gray-400">Open source projects</dd>
+                                <dt class="mb-2 text-3xl font-extrabold justify-center">{props.years}</dt>
+                                <dd class="text-gray-500 dark:text-gray-400">Years in Business</dd>
                             </div>
                         </dl>
                     </div>

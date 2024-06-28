@@ -124,8 +124,10 @@ export default function Home() {
             <div className="flex flex-col flex-grow gap-y-24 justify-evenly container mx-auto py-20">
                 {filteredData.map((item) => (
                     <Business
-                        name={item.Name} website={item.Website} email={item.Email} NAICS={item.NAICS} description={item.Description} numEmployees={item.numEmployees}
-                        revenue={item.revenue} review={item.review} phone={item.phone} address={item.Address} service={item.serviceOffered} legal={item.legalStructure}/>
+                        name={item.Name} website={item.Website} email={item.Email} NAICS={item.NAICS} 
+                        description={item.Description} numEmployees={item.numEmployees} years={item.yearsinbusiness}
+                        revenue={item.revenue} review={item.review} phone={item.phone} address={item.Address} 
+                        service={item.serviceOffered} legal={item.legalStructure}/>
                 ))}
             </div>
             <div className="container py-40"></div>
