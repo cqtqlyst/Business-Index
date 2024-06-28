@@ -158,7 +158,7 @@ export default function Business(props) {
     }
 
     return (        
-        <div className="flex bg-gray-800 border border-gray-700 rounded-lg">
+        <div className="flex bg-gray-800 border border-gray-500 rounded-lg">
             { errorWithImage ? 
             <Image className="w-400 h-300" src={placeholder} width={400} height={300} alt="an image"/> :
             <img className="w-400 h-300" src={image} width={400} height={300} alt="an image"/>
@@ -181,6 +181,10 @@ export default function Business(props) {
                         <button onClick={() => handleTabChange("reports")} id="reports-tab" data-tabs-target="#about" type="button" role="tab" 
                         className={activeTab === "reports" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Generate Reports</button>
                     </li>
+                    <li class="me-2">
+                        <button onClick={() => handleTabChange("contact")} id="reports-tab" data-tabs-target="#about" type="button" role="tab" 
+                        className={activeTab === "contact" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Contact</button>
+                    </li>
                 </ul>
                 <div id="defaultTabContent">
                     <div class={activeTab === "about" ? "p-4 rounded-lg md:p-8" : "hidden"} id="about" role="tabpanel" aria-labelledby="about-tab">
@@ -194,10 +198,33 @@ export default function Business(props) {
                         </a>
                     </div>
                     <div class={activeTab === "services" ? "p-4 rounded-lg md:p-8" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
-                        <h2 class="text-xl py-3 font-semibold tracking-tight text-gray-400">The services offered are {props.service}.</h2>
-                        <h2 class="text-xl py-3 font-semibold tracking-tight text-gray-400">The NAICS (North American Industry Classification System) code is {props.NAICS}. An NAICS code identifies a business's primary economic activity. Visit https://www.naics.com/ for the exact sector.</h2>
+                        <h2 class="text-lg py-3 font-medium tracking-tight text-gray-400">The services offered are {props.service}.</h2>
+                        <h2 class="text-lg py-3 font-medium tracking-tight text-gray-400">The NAICS (North American Industry Classification System) code is {props.NAICS}. An NAICS code identifies a business's primary economic activity. Visit https://www.naics.com/ for the exact sector.</h2>
                     </div>
                     <div class={activeTab === "facts" ? "p-4 rounded-lg md:p-8" : "hidden"} id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
+                        {/* reviews stuff */}
+                        <div class="flex items-center">
+                            <p class="text-lg font-medium text-gray-500 dark:text-gray-400">This company has been rated {props.review + " "}</p>
+                            <p class="text-lg font-medium text-gray-500 dark:text-gray-400">out of</p>
+                            <p class="text-lg font-medium text-gray-500 dark:text-gray-400">5. </p>
+                            <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                            </svg>
+                            <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg py-3 font-medium tracking-tight text-gray-400">The type of company/organization is {props.legal}.</h2>
+                        {/* numbers stuff */}
                         <dl class="grid max-w-screen-xl grid-cols-2 gap-12 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8 text-center">
                             <div class="flex flex-col">
                                 <dt class="mb-2 text-3xl font-extrabold">{props.numEmployees}</dt>
@@ -266,6 +293,9 @@ export default function Business(props) {
                                 <span class="sr-only">Loading...</span>
                             </div>
                         ) : null}      
+                    </div>
+                    <div class={activeTab === "contact" ? "p-4 rounded-lg md:p-8" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
+                        
                     </div>
                 </div>
             </div>

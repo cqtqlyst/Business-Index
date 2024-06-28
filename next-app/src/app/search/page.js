@@ -129,7 +129,7 @@ export default function Home() {
                         revenue={item.revenue} review={item.review} phone={item.phone} address={item.Address} 
                         service={item.serviceOffered} legal={item.legalStructure}/>
                 ))}
-            </div>
+                </div>
             <div className="container py-40"></div>
             <Footer/>
         </div>
