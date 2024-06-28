@@ -190,17 +190,20 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
+                <label for="upload">Upload a WebP image:</label>
+                <input type="file" id="upload" name="upload" accept="image/webp"></input>
                 <div className="flex justify-center">
                   <button
                     type="submit"
                     className="text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                     onClick={handleSubmit}
-                  >
+>
                     Submit
                   </button>
                 </div>
               </form>
             </div>
+            
           </div>
         </div>
         <div className="py-10"></div>
