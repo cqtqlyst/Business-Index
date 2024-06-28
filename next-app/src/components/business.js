@@ -160,65 +160,46 @@ export default function Business(props) {
     console.log(errorWithImage);
 
     return (        
-        <div className="flex">
+        <div className="flex bg-gray-800 border border-gray-700 rounded-lg">
             { errorWithImage ? 
-            <Image className="" src={placeholder} width={400} height={300} alt="an image"/>
-            :
-            <img className="" src={image} width={400} height={300} alt="an image"/>
+            <Image className="w-400 h-300" src={placeholder} width={400} height={300} alt="an image"/> :
+            <img className="w-400 h-300" src={image} width={400} height={300} alt="an image"/>
             }
-            <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
+            <div class="w-full rounded-lg shadow border-r border-t border-b border-gray-500">
+                <ul class="flex flex-wrap text-lg font-semibold text-center text-gray-500 border-b border-gray-500 rounded-t-lg" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
                     <li class="me-2">
-                        <button onClick={() => handleTabChange("about")} id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected={activeTab === 'about'} class="inline-block p-4 text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500">About</button>
+                        <button onClick={() => handleTabChange("about")} id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected={activeTab === 'about'} 
+                        className={activeTab === "about" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>About</button>
                     </li>
                     <li class="me-2">
-                        <button onClick={() => handleTabChange("services")} id="services-tab" data-tabs-target="#services" type="button" role="tab" aria-controls="services" aria-selected={activeTab === 'services'} class="inline-block p-4 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300">Services</button>
+                        <button onClick={() => handleTabChange("services")} id="services-tab" data-tabs-target="#services" type="button" role="tab" aria-controls="services" aria-selected={activeTab === 'services'} 
+                        className={activeTab === "services" ? "inline-block p-4 text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Services</button>
                     </li>
                     <li class="me-2">
-                        <button onClick={() => handleTabChange("facts")} id="statistics-tab" data-tabs-target="#statistics" type="button" role="tab" aria-controls="statistics" aria-selected={activeTab === 'facts'} class="inline-block p-4 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300">Facts</button>
+                        <button onClick={() => handleTabChange("facts")} id="statistics-tab" data-tabs-target="#statistics" type="button" role="tab" aria-controls="statistics" aria-selected={activeTab === 'facts'} 
+                        className={activeTab === "facts" ? "inline-block p-4 text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Facts</button>
+                    </li>
+                    <li class="me-2">
+                        <button onClick={() => handleTabChange("reports")} id="reports-tab" data-tabs-target="#about" type="button" role="tab" 
+                        className={activeTab === "reports" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Generate Reports</button>
                     </li>
                 </ul>
                 <div id="defaultTabContent">
-                    <div class={activeTab === "about" ? "p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" : "hidden"} id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <div class={activeTab === "about" ? "p-4 rounded-lg md:p-8" : "hidden"} id="about" role="tabpanel" aria-labelledby="about-tab">
                         <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{props.name}</h2>
-                        <p class="mb-3 text-gray-500 dark:text-gray-400">Empower Developers, IT Ops, and business teams to collaborate at high velocity. Respond to changes and deliver great customer and employee service experiences fast.</p>
-                        <a href="#" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
-                            Learn more
+                        <p class="mb-3 text-gray-500 dark:text-gray-400">good description{props.description}</p>
+                        <a href={props.website} class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
+                            Visit their website
                             <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                             </svg>
                         </a>
                     </div>
-                    <div class={activeTab === "services" ? "p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
-                        <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">We invest in the world’s potential</h2>
-                        <ul role="list" class="space-y-4 text-gray-500 dark:text-gray-400">
-                            <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                                <svg class="flex-shrink-0 w-3.5 h-3.5 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                                </svg>
-                                <span class="leading-tight">Dynamic reports and dashboards</span>
-                            </li>
-                            <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                                <svg class="flex-shrink-0 w-3.5 h-3.5 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                                </svg>
-                                <span class="leading-tight">Templates for everyone</span>
-                            </li>
-                            <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                                <svg class="flex-shrink-0 w-3.5 h-3.5 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                                </svg>
-                                <span class="leading-tight">Development workflow</span>
-                            </li>
-                            <li class="flex space-x-2 rtl:space-x-reverse items-center">
-                                <svg class="flex-shrink-0 w-3.5 h-3.5 text-blue-600 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                                </svg>
-                                <span class="leading-tight">Limitless business automation</span>
-                            </li>
-                        </ul>
+                    <div class={activeTab === "services" ? "p-4 rounded-lg md:p-8" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
+                        <h2 class="text-xl font-extrabold tracking-tight text-white">The services offered are {props.service}.</h2>
+                        <h2 class="text-xl font-extrabold tracking-tight text-white">The NAICS (North American Industry Classification System) code is {props.NAICS}. An NAICS code identifies a business's primary economic activity. Visit https://www.naics.com/ for the exact sector.</h2>
                     </div>
-                    <div class={activeTab === "facts" ? "p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" : "hidden"} id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
+                    <div class={activeTab === "facts" ? "p-4 rounded-lg md:p-8" : "hidden"} id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
                         <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
                             <div class="flex flex-col">
                                 <dt class="mb-2 text-3xl font-extrabold">73M+</dt>
@@ -233,6 +214,49 @@ export default function Business(props) {
                                 <dd class="text-gray-500 dark:text-gray-400">Open source projects</dd>
                             </div>
                         </dl>
+                    </div>
+                    <div class={activeTab === "reports" ? "p-4 rounded-lg md:p-8" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
+                        <div class="flex items-start my-2.5 bg-gray-50 dark:bg-gray-600 rounded-xl p-2">
+                            <div class="me-2">
+                                <span class="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white pb-2">
+                                    <svg fill="none" aria-hidden="true" class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 21">
+                                        <g clip-path="url(#clip0_3173_1381)">
+                                            <path fill="#E2E5E7" d="M5.024.5c-.688 0-1.25.563-1.25 1.25v17.5c0 .688.562 1.25 1.25 1.25h12.5c.687 0 1.25-.563 1.25-1.25V5.5l-5-5h-8.75z"/>
+                                            <path fill="#B0B7BD" d="M15.024 5.5h3.75l-5-5v3.75c0 .688.562 1.25 1.25 1.25z"/>
+                                            <path fill="#CAD1D8" d="M18.774 9.25l-3.75-3.75h3.75v3.75z"/>
+                                            <path fill="#F15642" d="M16.274 16.75a.627.627 0 01-.625.625H1.899a.627.627 0 01-.625-.625V10.5c0-.344.281-.625.625-.625h13.75c.344 0 .625.281.625.625v6.25z"/>
+                                            <path fill="#fff" d="M3.998 12.342c0-.165.13-.345.34-.345h1.154c.65 0 1.235.435 1.235 1.269 0 .79-.585 1.23-1.235 1.23h-.834v.66c0 .22-.14.344-.32.344a.337.337 0 01-.34-.344v-2.814zm.66.284v1.245h.834c.335 0 .6-.295.6-.605 0-.35-.265-.64-.6-.64h-.834zM7.706 15.5c-.165 0-.345-.09-.345-.31v-2.838c0-.18.18-.31.345-.31H8.85c2.284 0 2.234 3.458.045 3.458h-1.19zm.315-2.848v2.239h.83c1.349 0 1.409-2.24 0-2.24h-.83zM11.894 13.486h1.274c.18 0 .36.18.36.355 0 .165-.18.3-.36.3h-1.274v1.049c0 .175-.124.31-.3.31-.22 0-.354-.135-.354-.31v-2.839c0-.18.135-.31.355-.31h1.754c.22 0 .35.13.35.31 0 .16-.13.34-.35.34h-1.455v.795z"/>
+                                            <path fill="#CAD1D8" d="M15.649 17.375H3.774V18h11.875a.627.627 0 00.625-.625v-.625a.627.627 0 01-.625.625z"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_3173_1381">
+                                            <path fill="#fff" d="M0 0h20v20H0z" transform="translate(0 .5)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    {props.name} Report
+                                </span>
+                                <span class="flex text-xs font-normal text-gray-500 dark:text-gray-400 gap-2">
+                                    12 Pages 
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="self-center" width="3" height="4" viewBox="0 0 3 4" fill="none">
+                                        <circle cx="1.5" cy="2" r="1.5" fill="#6B7280"/>
+                                    </svg>
+                                    18 MB 
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="self-center" width="3" height="4" viewBox="0 0 3 4" fill="none">
+                                        <circle cx="1.5" cy="2" r="1.5" fill="#6B7280"/>
+                                    </svg>
+                                    PDF
+                                </span>
+                            </div>
+                            <div class="inline-flex self-center items-center">
+                                <button class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-600 dark:hover:bg-gray-500 dark:focus:ring-gray-600" type="button">
+                                    <svg class="w-4 h-4 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
+                                        <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+                                    </svg>
+                                </button>
+                            </div>   
+                        </div>   
                     </div>
                 </div>
             </div>

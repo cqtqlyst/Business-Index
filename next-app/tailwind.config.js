@@ -14,6 +14,7 @@ module.exports = {
         'purply-gray': '#4C495D',
         'light-purple': '#e0d5f1',
         'regular-purple': '#986ccc',
+        'matte-black': '#151515',
 
         'ivory': '#D1D7E0',
         'background-black': '#1e2020',

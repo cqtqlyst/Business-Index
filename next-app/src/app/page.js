@@ -24,13 +24,13 @@ export default function Home() {
       <div className="flex">
         <div>
           <p className="justify-center text-6xl font-black text-bright-purple px-20 pt-20">Discover. Collaborate. Develop. All in one package.</p>
-          <p className="justify-center text-3xl font-normal text-ivory px-20 pt-10">
+          <p className="justify-center text-3xl font-bold text-ivory px-20 pt-10">
             Every minute counts. Stop wasting time trying to connect your high school with local businesses. Effortlessly catalog and discover the businesses that you need. Streamline your search with our user-friendly app.
           </p>
           <button 
             onClick={handleGetStarted}
             type="button" 
-            class="text-white mt-8 mb-20 ml-20 bg-bright-purple hover:bg-purple-500 font-normal rounded-lg text-2xl px-5 py-2.5 me-2">
+            class="text-white mt-8 mb-20 ml-20 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-xl px-5 py-2.5 me-2">
             Get Started
           </button>
         </div>
