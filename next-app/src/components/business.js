@@ -1,12 +1,24 @@
 import genAI from "../app/gemini.js";
 import jsPDF from 'jspdf';
-import { useState } from "react";
+import Image from "next/image";
+
+import { useState, useEffect } from "react";
+import { storage } from "@/app/firebase.js";
+import { ref, getDownloadURL } from "firebase/storage";
+
 import businessPlaceholder from "../../public/images/business.png";
 
 export default function Business(props) {
 
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState("about");
+    const [image, setImage] = useState([]);
+
+    useEffect(() => {
+        getDownloadURL(ref(storage, "ArtisanCraftsCo.jpg")).then((url) => {
+            setImage(url);
+        })
+    }, []);
 
     const handleClick =  async () => {
         setLoading(true);
@@ -122,9 +134,11 @@ export default function Business(props) {
         setActiveTab(tab);
     }
 
-    return (
+    console.log(image);
+
+    return (        
         <div className="flex">
-            <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="../../public/images/business.png" alt=""></img>
+            <img className="" src="https://firebasestorage.googleapis.com/v0/b/hhs-capv2.appspot.com/o/ArtisanCraftsCo.jpg?alt=media&token=52ad480f-e8e0-4e43-b88c-cedb82354b89" width={400} height={400} alt=""/>
             <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
                     <li class="me-2">

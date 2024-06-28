@@ -43,8 +43,6 @@ export default function Home() {
             alert('You have entered an invalid email address!');
             return
         }
-        
-        
 
         let business = {
             Address: inputs[1].value,
