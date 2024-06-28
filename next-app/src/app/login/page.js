@@ -22,12 +22,12 @@ export default function Home () {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                sessionStorage.setItem("useremail", user.email);
                 // ...
-                console.log(user)
+                console.log(sessionStorage.getItem("useremail"))
  
                 //router to next page
-                window.location.href =
-                    '/';
+                window.location.href ='/';
             })
             .catch((error) => {
                 const errorCode = error.code;
