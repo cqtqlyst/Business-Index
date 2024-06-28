@@ -18,7 +18,8 @@ export default function Business(props) {
     useEffect(() => {
         const downloadName = props.name;
         const link = (downloadName.replaceAll(" ", "")).toLowerCase();
-        const linkWithoutPeriods = link.replaceAll(".", "") + ".webp";
+        const linkWithoutDashes = (link.replaceAll("-", "")).toLowerCase();
+        const linkWithoutPeriods = linkWithoutDashes.replaceAll(".", "") + ".webp";
         console.log(linkWithoutPeriods);
 
         try {
@@ -156,9 +157,6 @@ export default function Business(props) {
         setActiveTab(tab);
     }
 
-    // console.log(image);
-    console.log(errorWithImage);
-
     return (        
         <div className="flex bg-gray-800 border border-gray-700 rounded-lg">
             { errorWithImage ? 
@@ -166,18 +164,18 @@ export default function Business(props) {
             <img className="w-400 h-300" src={image} width={400} height={300} alt="an image"/>
             }
             <div class="w-full rounded-lg shadow border-r border-t border-b border-gray-500">
-                <ul class="flex flex-wrap text-lg font-semibold text-center text-gray-500 border-b border-gray-500 rounded-t-lg" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
-                    <li class="me-2">
+                <ul class="flex flex-wrap text-lg font-normal text-center text-gray-400 border-b border-gray-500 rounded-t-lg" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
+                    <li class="me-2"> 
                         <button onClick={() => handleTabChange("about")} id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected={activeTab === 'about'} 
                         className={activeTab === "about" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>About</button>
                     </li>
                     <li class="me-2">
                         <button onClick={() => handleTabChange("services")} id="services-tab" data-tabs-target="#services" type="button" role="tab" aria-controls="services" aria-selected={activeTab === 'services'} 
-                        className={activeTab === "services" ? "inline-block p-4 text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Services</button>
+                        className={activeTab === "services" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Services</button>
                     </li>
                     <li class="me-2">
                         <button onClick={() => handleTabChange("facts")} id="statistics-tab" data-tabs-target="#statistics" type="button" role="tab" aria-controls="statistics" aria-selected={activeTab === 'facts'} 
-                        className={activeTab === "facts" ? "inline-block p-4 text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Facts</button>
+                        className={activeTab === "facts" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Facts</button>
                     </li>
                     <li class="me-2">
                         <button onClick={() => handleTabChange("reports")} id="reports-tab" data-tabs-target="#about" type="button" role="tab" 
@@ -187,8 +185,8 @@ export default function Business(props) {
                 <div id="defaultTabContent">
                     <div class={activeTab === "about" ? "p-4 rounded-lg md:p-8" : "hidden"} id="about" role="tabpanel" aria-labelledby="about-tab">
                         <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{props.name}</h2>
-                        <p class="mb-3 text-gray-500 dark:text-gray-400">good description{props.description}</p>
-                        <a href={props.website} class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
+                        <p class="mb-3 text-gray-500 dark:text-gray-400 text-lg">{props.description}</p>
+                        <a href={props.website} class="inline-flex items-center font-medium text-purple-600 hover:text-purple-800 dark:text-purple-500 dark:hover:text-purple-700">
                             Visit their website
                             <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
@@ -196,8 +194,8 @@ export default function Business(props) {
                         </a>
                     </div>
                     <div class={activeTab === "services" ? "p-4 rounded-lg md:p-8" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
-                        <h2 class="text-xl font-extrabold tracking-tight text-white">The services offered are {props.service}.</h2>
-                        <h2 class="text-xl font-extrabold tracking-tight text-white">The NAICS (North American Industry Classification System) code is {props.NAICS}. An NAICS code identifies a business's primary economic activity. Visit https://www.naics.com/ for the exact sector.</h2>
+                        <h2 class="text-xl py-3 font-semibold tracking-tight text-gray-400">The services offered are {props.service}.</h2>
+                        <h2 class="text-xl py-3 font-semibold tracking-tight text-gray-400">The NAICS (North American Industry Classification System) code is {props.NAICS}. An NAICS code identifies a business's primary economic activity. Visit https://www.naics.com/ for the exact sector.</h2>
                     </div>
                     <div class={activeTab === "facts" ? "p-4 rounded-lg md:p-8" : "hidden"} id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
                         <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
@@ -216,9 +214,9 @@ export default function Business(props) {
                         </dl>
                     </div>
                     <div class={activeTab === "reports" ? "p-4 rounded-lg md:p-8" : "hidden"} id="services" role="tabpanel" aria-labelledby="services-tab">
-                        <div class="flex items-start my-2.5 bg-gray-50 dark:bg-gray-600 rounded-xl p-2">
+                        <div class="flex items-start my-2.5 bg-gray-600 rounded-xl p-2 w-72">
                             <div class="me-2">
-                                <span class="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white pb-2">
+                                <span class="flex items-center gap-2 text-normal font-medium text-gray-900 dark:text-white pb-2">
                                     <svg fill="none" aria-hidden="true" class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 21">
                                         <g clip-path="url(#clip0_3173_1381)">
                                             <path fill="#E2E5E7" d="M5.024.5c-.688 0-1.25.563-1.25 1.25v17.5c0 .688.562 1.25 1.25 1.25h12.5c.687 0 1.25-.563 1.25-1.25V5.5l-5-5h-8.75z"/>
@@ -249,14 +247,25 @@ export default function Business(props) {
                                 </span>
                             </div>
                             <div class="inline-flex self-center items-center">
-                                <button class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-600 dark:hover:bg-gray-500 dark:focus:ring-gray-600" type="button">
+                                <button class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-600 dark:hover:bg-gray-500 dark:focus:ring-gray-600" 
+                                    onClick={handleClick}
+                                    type="button">
                                     <svg class="w-4 h-4 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
                                         <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
                                     </svg>
                                 </button>
-                            </div>   
-                        </div>   
+                            </div>
+                        </div>
+                        {loading ? (
+                            <div role="status" className="mt-4">
+                                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                </svg>
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        ) : null}      
                     </div>
                 </div>
             </div>
