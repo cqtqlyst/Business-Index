@@ -119,7 +119,7 @@ export default function Home() {
                   </div>
                   <a
                     href="#"
-                    className="text-sm font-light text-gray-600 hover:underline"
+                    className="text-sm font-light text-gray-400 hover:underline"
                   >
                     Forgot password?
                   </a>
@@ -130,11 +130,11 @@ export default function Home() {
                 >
                   Submit
                 </button>
-                <p className="text-sm font-light text-gray-600">
+                <p className="text-sm font-light text-gray-400">
                   Don’t have an account yet?
                   <a
                     href="/signup"
-                    class="font-medium text-primary-600 hover:underline ps-1"
+                    class="font-medium text-primary-400 hover:underline ps-1"
                   >
                     Sign up
                   </a>
