@@ -6,18 +6,40 @@ import { useState, useEffect } from "react";
 import { storage } from "@/app/firebase.js";
 import { ref, getDownloadURL } from "firebase/storage";
 
-import businessPlaceholder from "../../public/images/business.png";
+import placeholder from "../../public/images/business.png";
 
 export default function Business(props) {
 
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState("about");
     const [image, setImage] = useState([]);
+    const [errorWithImage, setErrorWithImage] = useState(false);
 
     useEffect(() => {
-        getDownloadURL(ref(storage, "ArtisanCraftsCo.jpg")).then((url) => {
-            setImage(url);
-        })
+        const downloadName = props.name;
+        const link = (downloadName.replaceAll(" ", "")).toLowerCase();
+        const linkWithoutPeriods = link.replaceAll(".", "") + ".webp";
+        console.log(linkWithoutPeriods);
+
+        try {
+            getDownloadURL(ref(storage, linkWithoutPeriods))
+                .then((url) => {
+                setImage(url);
+                })
+                .catch((error) => {
+                    console.error("Error fetching download URL:", error);
+                    // Handle the error here (e.g., display an error message, set a default image)
+                    
+                    setErrorWithImage(true);
+
+                });
+        } catch (error) {
+            console.error("Error constructing download link:", error);
+            // Handle errors during link creation (e.g., log the error)
+
+            setErrorWithImage(true);
+        }
+
     }, []);
 
     const handleClick =  async () => {
@@ -134,11 +156,16 @@ export default function Business(props) {
         setActiveTab(tab);
     }
 
-    console.log(image);
+    // console.log(image);
+    console.log(errorWithImage);
 
     return (        
         <div className="flex">
-            <img className="" src="https://firebasestorage.googleapis.com/v0/b/hhs-capv2.appspot.com/o/ArtisanCraftsCo.jpg?alt=media&token=52ad480f-e8e0-4e43-b88c-cedb82354b89" width={400} height={400} alt=""/>
+            { errorWithImage ? 
+            <Image className="" src={placeholder} width={400} height={300} alt="an image"/>
+            :
+            <img className="" src={image} width={400} height={300} alt="an image"/>
+            }
             <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
                     <li class="me-2">
@@ -153,7 +180,7 @@ export default function Business(props) {
                 </ul>
                 <div id="defaultTabContent">
                     <div class={activeTab === "about" ? "p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" : "hidden"} id="about" role="tabpanel" aria-labelledby="about-tab">
-                        <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Powering innovation & trust at 200,000+ companies worldwide</h2>
+                        <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{props.name}</h2>
                         <p class="mb-3 text-gray-500 dark:text-gray-400">Empower Developers, IT Ops, and business teams to collaborate at high velocity. Respond to changes and deliver great customer and employee service experiences fast.</p>
                         <a href="#" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
                             Learn more

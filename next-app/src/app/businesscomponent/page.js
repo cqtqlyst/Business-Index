@@ -13,7 +13,7 @@ export default function Home(props) {
     }
 
     return (
-        <Business/>
+        <Business name={"Artisan Crafts Co"}/>
     );
 
 }
