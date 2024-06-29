@@ -96,10 +96,10 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <div class="mb-5">
+                <div className="mb-5">
                   <label
                     for="address"
-                    class="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     Address
                   </label>
@@ -113,7 +113,7 @@ export default function Home() {
                 <div class="mb-5">
                   <label
                     for="Service"
-                    class="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     Service
                   </label>
@@ -123,7 +123,7 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <div class="mb-5">
+                <div className="mb-5">
                   <label
                     for="Legal Structure"
                     class="block mb-2 text-sm font-medium text-white"
@@ -136,10 +136,10 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <div class="mb-5">
+                <div className="mb-5">
                   <label
                     for="NAICS Code"
-                    class="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     NAICS Code
                   </label>
@@ -152,7 +152,7 @@ export default function Home() {
                 <div class="mb-5">
                   <label
                     for="EmployeeCount"
-                    class="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     Number Of Employees
                   </label>
@@ -162,10 +162,10 @@ export default function Home() {
                     className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <div class="mb-5">
+                <div className="mb-5">
                   <label
                     for="WebsiteLink"
-                    class="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium text-white"
                   >
                     Website Link
                   </label>
@@ -176,10 +176,10 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <div class="mb-5">
+                <div className="mb-5">
                   <label
                     for="email"
-                    class="block mb-2 text-sm font-medium text-white"
+                    class="block mb-1 text-sm font-medium text-white"
                   >
                     Email Address
                   </label>
@@ -190,20 +190,33 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <label for="upload">Upload a WebP image:</label>
-                <input type="file" id="upload" name="upload" accept="image/webp"></input>
+                <label
+                  for="upload"
+                  className="block mb-2 text-sm font-medium text-white"
+                  style={{ marginBottom: "0.5rem" }}
+                >
+                  Upload a WebP image:
+                </label>
+                <input
+                  type="file"
+                  id="upload"
+                  name="upload"
+                  accept="image/webp"
+                  required
+                  className="file:rounded-md text-gray-400 text-sm rounded-sm focus:outline-none -mt-2"
+                  style={{ marginTop: "0rem" }}
+                ></input>
                 <div className="flex justify-center">
                   <button
                     type="submit"
                     className="text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                     onClick={handleSubmit}
->
+                  >
                     Submit
                   </button>
                 </div>
               </form>
             </div>
-            
           </div>
         </div>
         <div className="py-10"></div>
