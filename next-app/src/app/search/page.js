@@ -36,11 +36,16 @@ export default function Home() {
                     results.push(doc.data());
                 })
                 setData(results); // sets the allData variable
+                setFilteredData(results); // sets initial data to all
             });
         }
+
     }
 
-    useEffect(() => {getData()});
+
+    useEffect(() => {
+        getData()
+    });
 
     // function for handling when the user enters a keyword to search for businesses
     const handleSubmit = (event) => {
@@ -69,6 +74,7 @@ export default function Home() {
         setFilteredData(filtered);
     };
 
+
     function handleSearch(event) {
 
         event.preventDefault();
@@ -94,6 +100,7 @@ export default function Home() {
         setFilteredData(filtered);
 
     };
+    
 
     return (
         <div className="">
