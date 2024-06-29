@@ -17,7 +17,6 @@ export default function Business(props) {
   const [reviewsData, setReviewsData] = useState(false);
   const [revenueData, setRevenueData] = useState(false);
   const [salesData, setSalesData] = useState(false);
-  const reviewsAmount = Math.round(Math.random() * 550 + 50);
 
   useEffect(() => {
 
@@ -61,7 +60,7 @@ export default function Business(props) {
       props.legal; + "."
     
     if (reviewsData) {
-      prompt += " Include reviews data with " + props.review + " out of 5 stars and " + reviewsAmount + "reviews. ";
+      prompt += " Include reviews data with " + props.review + " out of 5 stars and " + props.reviewAmount + "reviews. ";
     }
     if (revenueData) {
       prompt += " Include revenue data with $" + props.revenue + " in revenue";
@@ -381,7 +380,7 @@ export default function Business(props) {
                 </svg>
               )}
               <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-                {props.review} ({reviewsAmount} Reviews)
+                {props.review} ({props.reviewAmount} Reviews)
               </p>
             </div>
             <p class="mb-3 text-gray-500 dark:text-gray-400 text-lg">

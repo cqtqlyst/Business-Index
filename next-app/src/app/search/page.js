@@ -135,7 +135,8 @@ export default function Home() {
                         legal={item.legalStructure} 
                         contactName={item.contact_name}
                         contactPhone={item.contact_phone} 
-                        contactEmail={item.contact_email}/>
+                        contactEmail={item.contact_email}
+                        reviewAmount={item.review_num}/>
                 ))}
                 </div>
             <div className="container py-40"></div>
