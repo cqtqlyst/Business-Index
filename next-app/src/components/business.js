@@ -9,12 +9,18 @@ import { ref, getDownloadURL } from "firebase/storage";
 import placeholder from "../../public/images/business.png";
 
 export default function Business(props) {
+
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("about");
   const [image, setImage] = useState([]);
   const [errorWithImage, setErrorWithImage] = useState(false);
+  const [reviewsData, setReviewsData] = useState(false);
+  const [revenueData, setRevenueData] = useState(false);
+  const [salesData, setSalesData] = useState(false);
+  const reviewsAmount = Math.round(Math.random() * 550 + 50);
 
   useEffect(() => {
+
     const downloadName = props.name;
     const link = downloadName.replaceAll(" ", "").toLowerCase();
     const linkWithoutDashes = link.replaceAll("-", "").toLowerCase();
@@ -45,19 +51,30 @@ export default function Business(props) {
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-    const prompt =
+    let prompt =
       "Write a short report about a business with the following information: " +
       "Name: " +
       props.name +
       " Services offered: " +
       props.service +
       " Legal Structure: " +
-      props.legal +
-      "\n include statistics";
-    // + "\n The report must be in be written in html and able to be compiled as an html document which includes tags arond everything";
-    // console.log(prompt);
+      props.legal; + "."
+    
+    if (reviewsData) {
+      prompt += " Include reviews data with " + props.review + " out of 5 stars and " + reviewsAmount + "reviews. ";
+    }
+    if (revenueData) {
+      prompt += " Include revenue data with $" + props.revenue + " in revenue";
+    }
+    if (salesData) {
+      prompt += " Include sales data.";
+    }
 
-    const { totalTokens } = await model.countTokens(prompt);
+    prompt += " Include other statisitcs besides reviews, revenue, and sales."
+
+    // const totalTokens = await model.countTokens(prompt);
+
+    // console.log(totalTokens);
 
     const result = await model.generateContent(prompt);
     const response = result.response;
@@ -75,7 +92,7 @@ export default function Business(props) {
     let pageHeight = doc.internal.pageSize.getHeight(); // Get page height
     // console.log("page height " + pageHeight);
 
-    console.log(lines);
+    // console.log(lines);
 
     for (const line of lines) {
       // Check if line would go off the current page
@@ -162,14 +179,14 @@ export default function Business(props) {
           src={placeholder}
           width={400}
           height={300}
-          alt="an image"
+          alt="business placeholder image"
         />
       ) : (
         <img
           className="businessImage object-cover"
           src={image}
           width={400}
-          alt="an image"
+          alt="business image"
         />
       )}
       <div class="w-full rounded-lg shadow border-r border-t border-b border-gray-500">
@@ -199,24 +216,6 @@ export default function Business(props) {
           </li>
           <li class="me-2">
             <button
-              onClick={() => handleTabChange("services")}
-              id="services-tab"
-              data-tabs-target="#services"
-              type="button"
-              role="tab"
-              aria-controls="services"
-              aria-selected={activeTab === "services"}
-              className={
-                activeTab === "services"
-                  ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700"
-                  : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"
-              }
-            >
-              Services
-            </button>
-          </li>
-          <li class="me-2">
-            <button
               onClick={() => handleTabChange("facts")}
               id="statistics-tab"
               data-tabs-target="#statistics"
@@ -231,6 +230,24 @@ export default function Business(props) {
               }
             >
               Facts
+            </button>
+          </li>
+          <li class="me-2">
+            <button
+              onClick={() => handleTabChange("services")}
+              id="services-tab"
+              data-tabs-target="#services"
+              type="button"
+              role="tab"
+              aria-controls="services"
+              aria-selected={activeTab === "services"}
+              className={
+                activeTab === "services"
+                  ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700"
+                  : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"
+              }
+            >
+              Services
             </button>
           </li>
           <li class="me-2">
@@ -364,7 +381,7 @@ export default function Business(props) {
                 </svg>
               )}
               <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-                {props.review}
+                {props.review} ({reviewsAmount} Reviews)
               </p>
             </div>
             <p class="mb-3 text-gray-500 dark:text-gray-400 text-lg">
@@ -393,30 +410,18 @@ export default function Business(props) {
             </a>
           </div>
           <div
-            class={
-              activeTab === "services" ? "p-4 rounded-lg md:p-8" : "hidden"
-            }
-            id="services"
-            role="tabpanel"
-            aria-labelledby="services-tab"
-          >
-            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-400">
-              The services offered are {props.service}.
-            </h2>
-            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-400">
-              The NAICS (North American Industry Classification System) code is{" "}
-              {props.NAICS}. An NAICS code identifies a business's primary
-              economic activity. Visit https://www.naics.com/ for the exact
-              sector.
-            </h2>
-          </div>
-          <div
             class={activeTab === "facts" ? "p-4 rounded-lg md:p-8" : "hidden"}
             id="statistics"
             role="tabpanel"
             aria-labelledby="statistics-tab"
           >
-            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-400">
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
+                The address of the business is {props.address}.
+            </h2>
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
+                The email for conact is {props.email}.
+              </h2>
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
               The type of company/organization is {props.legal}.
             </h2>
             {/* numbers stuff */}
@@ -442,6 +447,24 @@ export default function Business(props) {
                 </dd>
               </div>
             </dl>
+          </div>
+          <div
+            class={
+              activeTab === "services" ? "p-4 rounded-lg md:p-8" : "hidden"
+            }
+            id="services"
+            role="tabpanel"
+            aria-labelledby="services-tab"
+          >
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
+              The services offered are {props.service}.
+            </h2>
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
+              The NAICS (North American Industry Classification System) code is{" "}
+              {props.NAICS}. An NAICS code identifies a business's primary
+              economic activity. Visit https://www.naics.com/ for the exact
+              sector.
+            </h2>
           </div>
           <div
             class={activeTab === "reports" ? "p-4 rounded-lg md:p-8" : "hidden"}
@@ -497,7 +520,7 @@ export default function Business(props) {
                   {props.name} Report
                 </span>
                 <span class="flex text-xs font-normal text-gray-500 dark:text-gray-400 gap-2">
-                  12 Pages
+                  3 Pages
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
@@ -509,7 +532,7 @@ export default function Business(props) {
                   >
                     <circle cx="1.5" cy="2" r="1.5" fill="#6B7280" />
                   </svg>
-                  18 MB
+                  8 KB
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
@@ -564,6 +587,61 @@ export default function Business(props) {
                 <span class="sr-only">Loading...</span>
               </div>
             ) : null}
+            {/* customize the statistics/report */}
+            <div className="flex items-center mt-3">
+              <div className="h-5">
+                <input
+                  id="terms"
+                  aria-describedby="terms"
+                  type="checkbox"
+                  className="w-4 h-4 border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-purple-600 ring-offset-gray-800 accent-purple-500"
+                  onChange={(event) => {
+                    setReviewsData(event.target.checked);
+                  }}
+                />
+              </div>
+              <div className="ml-3 text-lg">
+                <label class="text-gray-400">
+                  Include reviews data?
+                </label>
+              </div>
+            </div>
+            <div className="flex items-center mt-3">
+              <div className="h-5">
+                <input
+                  id="terms"
+                  aria-describedby="terms"
+                  type="checkbox"
+                  className="w-4 h-4 border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-purple-600 ring-offset-gray-800 accent-purple-500"
+                  onChange={(event) => {
+                    setSalesData(event.target.checked);
+                  }}
+                />
+              </div>
+              <div className="ml-3 text-lg">
+                <label class="text-gray-400">
+                  Include sales data?
+                </label>
+              </div>
+            </div>
+            <div className="flex items-center mt-3">
+              <div className="h-5">
+                <input
+                  id="terms"
+                  aria-describedby="terms"
+                  type="checkbox"
+                  className="w-4 h-4 border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-purple-600 ring-offset-gray-800 accent-purple-500"
+                  onChange={(event) => {
+                    setRevenueData(event.target.checked);
+                  }}
+                />
+              </div>
+              <div className="ml-3 text-lg">
+                <label class="text-gray-400">
+                  Include revenue data?
+                </label>
+              </div>
+            </div>
           </div>
           <div
             class={activeTab === "contact" ? "p-4 rounded-lg md:p-8" : "hidden"}
@@ -585,7 +663,7 @@ export default function Business(props) {
                       type="email"
                       id="email"
                       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                      placeholder="name@flowbite.com"
+                      placeholder="name@company.com"
                       required
                     />
                   </div>
@@ -634,9 +712,12 @@ export default function Business(props) {
             role="tabpanel"
             aria-labelledby="services-tab"
           >
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
-            </h5>
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
+                The CEO/President/Head of Operations of {props.name} is {props.contactName}.
+            </h2>
+            <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
+                You can reach him/her at {props.contactEmail} or {props.contactPhone}.
+            </h2>
           </div>
         </div>
       </div>

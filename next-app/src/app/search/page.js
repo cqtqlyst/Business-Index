@@ -89,72 +89,46 @@ export default function Home() {
 
     // updates the filtered data field
     setFilteredData(filtered);
-  }
+  } 
 
-  return (
-    <div className="">
-      <Nav />
-      <form className="max-w-2xl mx-auto py-10">
-        <label class="mb-2 font-medium text-gray-900 sr-only dark:text-white">
-          Search
-        </label>
-        <div class="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg
-              class="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <input
-            class="block w-full p-4 ps-10 text-xl text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900"
-            placeholder="Search for businesses"
-            ref={searchTermRef}
-            onKeyDown={(event) => {
-              if (event.key == "Enter") {
-                handleSubmit(event);
-              }
-            }}
-          />
-          <button
-            class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-xl px-4 py-2 hover:bg-purple-700"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
-        </div>
-      </form>
-      <div className="flex flex-col flex-grow gap-y-24 justify-evenly container mx-auto py-20">
-        {filteredData.map((item) => (
-          <Business
-            name={item.Name}
-            website={item.Website}
-            email={item.Email}
-            NAICS={item.NAICS}
-            description={item.Description}
-            numEmployees={item.numEmployees}
-            years={item.yearsinbusiness}
-            revenue={item.revenue}
-            review={item.review}
-            phone={item.phone}
-            address={item.Address}
-            service={item.serviceOffered}
-            legal={item.legalStructure}
-          />
-        ))}
-      </div>
-      <div className="container py-40"></div>
-      <Footer />
+    return (
+        <div className="">
+            <Nav/>
+            <form className="max-w-2xl mx-auto py-10">
+                <label class="mb-2 font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input 
+                        class="block w-full p-4 ps-10 text-xl text-ivory border border-gray-500 rounded-lg bg-gray-700 focus:ring-4 focus:outline-none focus:ring-purple-900" placeholder="Search for businesses" 
+                        ref={searchTermRef}
+                        onKeyDown={(event) => {
+                            if (event.key == "Enter") {
+                                handleSubmit(event);
+                            }
+                        }}
+                    />
+                    <button class="text-ivory absolute end-2.5 bottom-2.5 bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-xl px-4 py-2 hover:bg-purple-700"
+                        onClick={handleSearch}>
+                        Search
+                    </button>
+                </div>
+            </form>
+            <div className="flex flex-col flex-grow gap-y-24 justify-evenly container mx-auto py-20">
+                {filteredData.map((item) => (
+                    <Business
+                        name={item.Name} website={item.Website} email={item.Email} NAICS={item.NAICS} 
+                        description={item.Description} numEmployees={item.numEmployees} years={item.yearsinbusiness}
+                        revenue={item.revenue} review={item.review} address={item.Address} 
+                        service={item.serviceOffered} legal={item.legalStructure} contactName={item.contact_name}
+                        contactPhone={item.contact_phone} contactEmail={item.contact_email}/>
+                ))}
+                </div>
+            <div className="container py-40"></div>
+            <Footer/>
     </div>
   );
 }
