@@ -2,7 +2,7 @@
 
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
-import {storage} from "../firebase"
+import { storage } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import db from "../firebase";
 import backupData from "../backup";
@@ -47,15 +47,28 @@ export default function Home() {
     }
 
     let business = {
-      Address: inputs[1].value,
-      Email: inputs[7].value,
-      legalStructure: inputs[3].value,
-      NAICS: inputs[4].value,
       Name: inputs[0].value,
-      numEmployees: inputs[5].value,
-      serviceOffered: inputs[2].value,
-      Website: inputs[6].value,
+      Description: inputs[1].value,
+      Website: inputs[2].value,
+      Email: inputs[3].value,
+      Address: inputs[4].value,
+      revenue: inputs[5].value,
+      serviceOffered: inputs[6].value,
+      legalStructure: inputs[7].value,
+      NAICS: inputs[8].value,
+      numEmployees: inputs[9].value,
+      yearsinbusiness: inputs[10].value,
+      contact_name: inputs[11].value,
+      contact_email: inputs[12].value,
+      review: inputs[13].value,
+      review_num: inputs[14].value,
     };
+
+    for (const key in business) {
+      if (!business[key]) {
+        delete business[key];
+      }
+    }
 
     const nDoc = await addDoc(collection(db, "businesses"), business);
     console.log("Document written with ID: ", nDoc.id);
@@ -65,7 +78,6 @@ export default function Home() {
       console.log(fname);
       const storageRef = ref(storage, `${fname}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
-
 
       uploadTask.on(
         "state_changed",
@@ -78,18 +90,15 @@ export default function Home() {
         },
         () => {
           // Handle successful uploads on complete
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
-
           });
         }
       );
     }
 
-
     alert("You have successfully entered a business into the database!");
     form.reset();
-
 
     backupData();
     //window.location.href = "/enter";
@@ -98,7 +107,7 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <section className="bg-black py-24">
+      <section className="bg-black py-24 min-h-screen">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
             href="#"
@@ -125,72 +134,21 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
-                <div className="mb-5">
+
+                <div class="mb-6">
                   <label
-                    for="address"
-                    className="block mb-2 text-sm font-medium text-white"
+                    for="large-input"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Address
-                  </label>
-                  <input
-                    type="address"
-                    placeholder="1234 First Ave. New York, NY"
-                    required
-                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
-                  />
-                </div>
-                <div class="mb-5">
-                  <label
-                    for="Service"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Service
+                    Description
                   </label>
                   <input
                     type="text"
-                    // placeholder="What Services Does Your Business Offer" required
-                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                    id="large-input"
+                    class="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-8 placeholder-gray-400"
                   />
                 </div>
-                <div className="mb-5">
-                  <label
-                    for="Legal Structure"
-                    class="block mb-2 text-sm font-medium text-white"
-                  >
-                    Legal Structure
-                  </label>
-                  <input
-                    type="text"
-                    // placeholder="Enter what legal structure the business has" required
-                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
-                  />
-                </div>
-                <div className="mb-5">
-                  <label
-                    for="NAICS Code"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    NAICS Code
-                  </label>
-                  <input
-                    type="number"
-                    // placeholder="Enter what NAICS code the business falls under" required
-                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
-                  />
-                </div>
-                <div class="mb-5">
-                  <label
-                    for="EmployeeCount"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Number Of Employees
-                  </label>
-                  <input
-                    type="number"
-                    // placeholder="Enter the number of employees the business has"
-                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
-                  />
-                </div>
+
                 <div className="mb-5">
                   <label
                     for="WebsiteLink"
@@ -205,6 +163,7 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
+
                 <div className="mb-5">
                   <label
                     for="email"
@@ -219,6 +178,166 @@ export default function Home() {
                     className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
+
+                <div className="mb-5">
+                  <label
+                    for="address"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Address
+                  </label>
+                  <input
+                    type="address"
+                    placeholder="1234 First Ave. New York, NY"
+                    required
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    for="revenue"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Revenue
+                  </label>
+                  <input
+                    type="number"
+                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+
+                <div class="mb-5">
+                  <label
+                    for="Service"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Service
+                  </label>
+                  <input
+                    type="text"
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    for="Legal Structure"
+                    class="block mb-2 text-sm font-medium text-white"
+                  >
+                    Legal Structure
+                  </label>
+                  <input
+                    type="text"
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    for="NAICS Code"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    NAICS Code
+                  </label>
+                  <input
+                    type="number"
+                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+                <div class="mb-5">
+                  <label
+                    for="EmployeeCount"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Number Of Employees
+                  </label>
+                  <input
+                    type="number"
+                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    for="years"
+                    class="block mb-1 text-sm font-medium text-white"
+                  >
+                    Years in business
+                  </label>
+                  <input
+                    type="number"
+                    required
+                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+
+                <label
+                  for="CEO"
+                  className=" text-md font-bold leading-tight tracking-tight md:text-md text-white"
+                >
+                  CEO/President/Head of Operations
+                </label>
+
+                <div className="mb-5">
+                  <label
+                    for="contactName"
+                    class="block mb-1 text-sm font-medium text-white"
+                  >
+                    Contact name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    for="contactEmail"
+                    class="block mb-1 text-sm font-medium text-white"
+                  >
+                    Contact email
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+
+                <label
+                  for="Reviews"
+                  className=" text-md font-bold leading-tight tracking-tight md:text-md text-white"
+                >
+                  Reviews
+                </label>
+
+                <div className="mb-5">
+                  <label
+                    for="numberOfStars"
+                    class="block mb-1 text-sm font-medium text-white"
+                  >
+                    Number of stars
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    for="numberOfReviews"
+                    class="block mb-1 text-sm font-medium text-white"
+                  >
+                    Number of reviews
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                  />
+                </div>
+
                 <label
                   for="upload"
                   className="block mb-2 text-sm font-medium text-white"
