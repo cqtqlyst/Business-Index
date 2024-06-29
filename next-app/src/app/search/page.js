@@ -133,8 +133,9 @@ export default function Home() {
                     <Business
                         name={item.Name} website={item.Website} email={item.Email} NAICS={item.NAICS} 
                         description={item.Description} numEmployees={item.numEmployees} years={item.yearsinbusiness}
-                        revenue={item.revenue} review={item.review} phone={item.phone} address={item.Address} 
-                        service={item.serviceOffered} legal={item.legalStructure}/>
+                        revenue={item.revenue} review={item.review} address={item.Address} 
+                        service={item.serviceOffered} legal={item.legalStructure} contactName={item.contact_name}
+                        contactPhone={item.contact_phone} contactEmail={item.contact_email}/>
                 ))}
                 </div>
             <div className="container py-40"></div>
