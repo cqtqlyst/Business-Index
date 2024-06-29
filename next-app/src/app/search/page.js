@@ -9,6 +9,7 @@ import db from "../firebase";
 import Head from "next/head";
 
 export default function Home() {
+    
   // react hooks for the different variables throughout the program
   const [fetched, setFetched] = useState(false);
   const [allData, setData] = useState(null);
@@ -120,11 +121,21 @@ export default function Home() {
             <div className="flex flex-col flex-grow gap-y-24 justify-evenly container mx-auto py-20">
                 {filteredData.map((item) => (
                     <Business
-                        name={item.Name} website={item.Website} email={item.Email} NAICS={item.NAICS} 
-                        description={item.Description} numEmployees={item.numEmployees} years={item.yearsinbusiness}
-                        revenue={item.revenue} review={item.review} address={item.Address} 
-                        service={item.serviceOffered} legal={item.legalStructure} contactName={item.contact_name}
-                        contactPhone={item.contact_phone} contactEmail={item.contact_email}/>
+                        name={item.Name} 
+                        website={item.Website} 
+                        mail={item.Email} 
+                        NAICS={item.NAICS} 
+                        description={item.Description}
+                        numEmployees={item.numEmployees} 
+                        years={item.yearsinbusiness}
+                        revenue={item.revenue} 
+                        review={item.review} 
+                        address={item.Address} 
+                        service={item.serviceOffered} 
+                        legal={item.legalStructure} 
+                        contactName={item.contact_name}
+                        contactPhone={item.contact_phone} 
+                        contactEmail={item.contact_email}/>
                 ))}
                 </div>
             <div className="container py-40"></div>
