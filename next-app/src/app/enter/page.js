@@ -2,7 +2,7 @@
 
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
-import stroage from "../firebase"
+import {storage} from "../firebase"
 import { collection, addDoc } from "firebase/firestore";
 import db from "../firebase";
 import backupData from "../backup";
@@ -61,10 +61,11 @@ export default function Home() {
     console.log("Document written with ID: ", nDoc.id);
 
     if (file != null) {
-      const storageRef = ref(storage, `images/${file.name}`);
+      const fname = inputs[0].value.replace(/\s+/g, "").toLowerCase() + ".webp";
+      console.log(fname);
+      const storageRef = ref(storage, `${fname}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
-      setUploading(true);
 
       uploadTask.on(
         "state_changed",
@@ -91,7 +92,7 @@ export default function Home() {
 
 
     backupData();
-    window.location.href = "/enter";
+    //window.location.href = "/enter";
   };
 
   return (
