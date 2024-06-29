@@ -187,7 +187,7 @@ export default function Business(props) {
                     </li>
                     <li class="me-2">
                         <button onClick={() => handleTabChange("ceo")} id="reports-tab" data-tabs-target="#about" type="button" role="tab" 
-                        className={activeTab === "ceo" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>Contact</button>
+                        className={activeTab === "ceo" ? "inline-block p-4 text-purple-500 rounded-ss-lg hover:bg-gray-700" : "inline-block p-4 rounded-ss-lg hover:bg-gray-700"}>CEO</button>
                     </li>
                 </ul>
                 <div id="defaultTabContent">
