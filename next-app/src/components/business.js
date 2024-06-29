@@ -520,7 +520,7 @@ export default function Business(props) {
                   {props.name} Report
                 </span>
                 <span class="flex text-xs font-normal text-gray-500 dark:text-gray-400 gap-2">
-                  12 Pages
+                  3 Pages
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
@@ -532,7 +532,7 @@ export default function Business(props) {
                   >
                     <circle cx="1.5" cy="2" r="1.5" fill="#6B7280" />
                   </svg>
-                  18 MB
+                  8 KB
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"

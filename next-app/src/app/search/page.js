@@ -89,35 +89,7 @@ export default function Home() {
 
     // updates the filtered data field
     setFilteredData(filtered);
-  }
-
-
-    function handleSearch(event) {
-
-        event.preventDefault();
-
-        let searchTerm = searchTermRef.current.value;
-
-        let filtered = [];
-
-        if (allData != null) {
-            // use the .filter() method & an inline function to search through and find the filtered data
-            filtered = allData.filter((item) => {
-                try {
-                    return item.Name.toLowerCase().includes(searchTerm.toLowerCase());
-                }
-                catch {
-                    console.log(item)
-                    return false;
-                }
-            });
-        }
-
-        // updates the filtered data field
-        setFilteredData(filtered);
-
-    };
-    
+  } 
 
     return (
         <div className="">
@@ -157,29 +129,6 @@ export default function Home() {
                 </div>
             <div className="container py-40"></div>
             <Footer/>
-        </div>
-      </form>
-      <div className="flex flex-col flex-grow gap-y-24 justify-evenly container mx-auto py-20">
-        {filteredData.map((item) => (
-          <Business
-            name={item.Name}
-            website={item.Website}
-            email={item.Email}
-            NAICS={item.NAICS}
-            description={item.Description}
-            numEmployees={item.numEmployees}
-            years={item.yearsinbusiness}
-            revenue={item.revenue}
-            review={item.review}
-            phone={item.phone}
-            address={item.Address}
-            service={item.serviceOffered}
-            legal={item.legalStructure}
-          />
-        ))}
-      </div>
-      <div className="container py-40"></div>
-      <Footer />
     </div>
   );
 }
