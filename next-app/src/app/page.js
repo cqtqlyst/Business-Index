@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+
+
 import logo from "../../public/logo.jpg";
 import productImage from "../../public/images/primary.png";
 import searchImage from "../../public/images/search.png";
@@ -10,6 +12,10 @@ import stanfordlogo from "../../public/images/stanfordlogo.png";
 import harvardlogo from "../../public/images/harvardlogo.png";
 import usclogo from "../../public/images/usclogo.png";
 import uclalogo from "../../public/images/uclalogo.png";
+import bloom from "../../public/images/BloomInstitute.png";
+import seromed from "../../public/images/SeroMed.png";
+import tac from "../../public/images/TAC.png";
+import enter from "../../public/images/search2.png";
 
 export default function Home() {
   function handleGetStarted(event) {
@@ -44,37 +50,15 @@ export default function Home() {
           <Image className="" width={2250} src={productImage} />
         </div>
       </div>
-
-      <h3 class="mb-4 font-semibold text-gray-900 dark:text-white text-xl">
-        Join some of the world's leading acedemics using BusinessIndex
-      </h3>
-      <ul className="items-center w-96 text-sm font-medium text-gray-900 rounded-lg sm:flex">
-        <li className="w-full">
-          <div className="flex items-center ps-3">
-            <Image
-              src={stanfordlogo}
-              class="w-32 h-32 mr-2"
-              alt="stanfordlogo"
-            />
-          </div>
-        </li>
-        <li className="w-full">
-          <div className="flex items-center ps-3">
-            <Image src={harvardlogo} class="w-24 h-24 mr-2" alt="harvardlogo" />
-          </div>
-        </li>
-        <li className="w-full">
-          <div className="flex items-center ps-3">
-            <Image src={usclogo} class="w-48 h-24 mr-2" alt="usclogo" />
-          </div>
-        </li>
-        <li className="w-full">
-          <div className="flex items-center ps-3">
-            <Image src={uclalogo} class="w-24 h-24 mr-2" alt="uclalogo" />
-          </div>
-        </li>
-      </ul>
-
+      <div className="mt-4 py-14">
+        <h5 class="text-4xl font-bold text-ivory text-center">Join the following organizations who use BusinessIndex</h5>
+        <div className="mt-10 flex items-center justify-center gap-10">
+          <Image className="rounded-lg" src={bloom} height={100}/>
+          <Image className="rounded-lg" src={seromed} height={100}/>
+          <Image className="rounded-lg" src={tac} height={100}/>
+        </div>
+      </div>
+      {/* search section */}
       <div className="flex px-16 py-40 flex-wrap">
         <div>
           <p className="text-ivory font-bold text-4xl py-5">
@@ -215,26 +199,26 @@ export default function Home() {
         <div className="flex-grow pr-5">
           <Image
             className="justify-end float-right"
-            width={400}
+            width={750}
             src={searchImage}
           />
         </div>
       </div>
-
-      <div className="flex px-16 py-40 flex-wrap justify-end">
-        <div>
+      {/* enter section */}
+      <div className="flex px-16 py-40">
+        <div className="justify-start pl-5">
+            <Image
+              className=""
+              width={400}
+              src={enter}
+            />
+        </div>
+        <div className="justify-end ml-72">
           <p className="text-ivory font-bold text-4xl py-5">Enter businesses</p>
           <div className="flex justify-end pt-10">
             <p className="text-6xl text-regular-purple font-extrabold py-5">
-              Unlock limitless possibilities with every new business you enter.
+              Update the database with new businesses
             </p>
-          </div>
-          <div className="flex-grow pl-5">
-            <Image
-              className="justify-start float-left"
-              width={400}
-              src={searchImage}
-            />
           </div>
           <ul className="space-y-8 text-left text-gray-500 dark:text-gray-400 text-2xl py-5 ml-10">
             <li className="flex items-center space-x-3 rtl:space-x-reverse">
