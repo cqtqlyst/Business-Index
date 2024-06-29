@@ -39,29 +39,30 @@ export default function Home() {
       return;
     }
 
-    let email = inputs[7].value;
+    let email = inputs[2].value;
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert("You have entered an invalid email address!");
       return;
     }
+    let descriptionValue = document.getElementById("description-area").value
 
     let business = {
       Name: inputs[0].value,
-      Description: inputs[1].value,
-      Website: inputs[2].value,
-      Email: inputs[3].value,
-      Address: inputs[4].value,
-      revenue: inputs[5].value,
-      serviceOffered: inputs[6].value,
-      legalStructure: inputs[7].value,
-      NAICS: inputs[8].value,
-      numEmployees: inputs[9].value,
-      yearsinbusiness: inputs[10].value,
-      contact_name: inputs[11].value,
-      contact_email: inputs[12].value,
-      review: inputs[13].value,
-      review_num: inputs[14].value,
+      Description: descriptionValue,
+      Website: inputs[1].value,
+      Email: inputs[2].value,
+      Address: inputs[3].value,
+      revenue: inputs[4].value,
+      serviceOffered: inputs[5].value,
+      legalStructure: inputs[6].value,
+      NAICS: inputs[7].value,
+      numEmployees: inputs[8].value,
+      yearsinbusiness: inputs[9].value,
+      contact_name: inputs[10].value,
+      contact_email: inputs[11].value,
+      review: inputs[12].value,
+      review_num: inputs[13].value,
     };
 
     for (const key in business) {
@@ -107,8 +108,8 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <section className="bg-black py-24 min-h-screen">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <section class="">
+        <div className="flex flex-col items-center px-6 mb-12 first-letter:mx-auto lg:py-0 py-0">
           <a
             href="#"
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
@@ -116,8 +117,8 @@ export default function Home() {
             <Image src={logoremovebg} class="w-8 h-8 mr-2" alt="Logoremovebg" />
             BusinessIndex
           </a>
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <div className="w-full overflow-scroll overflow-x-visible custom-bar bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div className="px-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                 Enter a business
               </h1>
@@ -142,10 +143,11 @@ export default function Home() {
                   >
                     Description
                   </label>
-                  <input
+                  <textarea
                     type="text"
-                    id="large-input"
-                    class="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-8 placeholder-gray-400"
+                    id="description-area"
+                    rows="6"
+                    class="resize-none shadow-sm overflow-hidden bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2 focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full placeholder-gray-400"
                   />
                 </div>
 
@@ -368,7 +370,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="py-10"></div>
       </section>
       <Footer />
     </div>
