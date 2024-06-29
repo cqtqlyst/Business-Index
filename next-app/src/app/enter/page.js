@@ -2,7 +2,7 @@
 
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
-import Head from "next/head";
+import stroage from "../firebase"
 import { collection, addDoc } from "firebase/firestore";
 import db from "../firebase";
 import backupData from "../backup";
@@ -10,17 +10,16 @@ import { checkAuthState } from "../auth";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import logoremovebg from "../../../public/logoremovebg.png";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const [file, setFile] = useState(null);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await checkAuthState();
-      setUser(user);
-    };
-    fetchUser();
-  }, []);
+  const handleFileChange = (e) => {
+    if (e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,10 +59,39 @@ export default function Home() {
 
     const nDoc = await addDoc(collection(db, "businesses"), business);
     console.log("Document written with ID: ", nDoc.id);
+
+    if (file != null) {
+      const storageRef = ref(storage, `images/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      setUploading(true);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Handle progress, if needed
+        },
+        (error) => {
+          // Handle error
+          console.error("Upload error:", error);
+        },
+        () => {
+          // Handle successful uploads on complete
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+
+          });
+        }
+      );
+    }
+
+
     alert("You have successfully entered a business into the database!");
     form.reset();
 
+
     backupData();
+    window.location.href = "/enter";
   };
 
   return (
@@ -205,6 +233,7 @@ export default function Home() {
                   required
                   className="file:rounded-md text-gray-400 text-sm rounded-sm focus:outline-none -mt-2"
                   style={{ marginTop: "0rem" }}
+                  onChange={handleFileChange}
                 ></input>
                 <div className="flex justify-center">
                   <button
