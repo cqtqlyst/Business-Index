@@ -55,7 +55,7 @@ export default function Home() {
       // use the .filter() method & an inline function to search through and find the filtered data
       filtered = allData.filter((item) => {
         try {
-          return item.Name.toLowerCase().includes(
+          return item.Description.toLowerCase().includes(
             event.target.value.toLowerCase()
           );
         } catch {
