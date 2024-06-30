@@ -418,7 +418,7 @@ export default function Business(props) {
                 The address of the business is {props.address}.
             </h2>
             <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
-                The email for conact is {props.email}.
+                The email for contact is {props.email}.
               </h2>
             <h2 class="text-lg py-3 font-medium tracking-tight text-gray-300">
               The type of company/organization is {props.legal}.
