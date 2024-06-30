@@ -123,7 +123,7 @@ export default function Home() {
                     <Business
                         name={item.Name} 
                         website={item.Website} 
-                        mail={item.Email} 
+                        email={item.Email} 
                         NAICS={item.NAICS} 
                         description={item.Description}
                         numEmployees={item.numEmployees} 
