@@ -268,13 +268,13 @@ export default function Home() {
                   <input
                     type="number"
                     required
-                    className="remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                    className="mb-5 remove-arrow shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
 
                 <label
                   for="CEO"
-                  className=" text-md font-bold leading-tight tracking-tight md:text-md text-white"
+                  className="text-md font-bold leading-tight tracking-tight md:text-md text-white mt-5"
                 >
                   CEO/President/Head of Operations
                 </label>
@@ -302,7 +302,7 @@ export default function Home() {
                   <input
                     type="text"
                     required
-                    className="shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
+                    className="mb-5 shadow-sm bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full p-2.5 placeholder-gray-400"
                   />
                 </div>
 
