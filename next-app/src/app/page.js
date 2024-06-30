@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Head from "next/head";
+
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
-
 
 import logo from "../../public/logo.jpg";
 import productImage from "../../public/images/primary.png";
