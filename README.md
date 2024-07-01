@@ -1,4 +1,4 @@
-# Business-Index: CAP 23-24
+# BusinessIndex: CAP 23-24
 
 This is the repository for the Homestead FBLA Coding and Programming project for the 2023-2024 school year. The team members are Aayush Gaywala (github username: cqtqlyst), Mihir Anantatheerta (github username: mihir-a), and Dan Iacob (github: MrBigBoss123). 
 
