@@ -19,10 +19,10 @@ export default function Home() {
   const signup = (e) => {
     e.preventDefault();
 
+    //Get the email and password
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    // const confirmPassword = confirmPasswordRef.current.value;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

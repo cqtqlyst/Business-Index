@@ -14,6 +14,7 @@ export default function Home() {
     const [message1, setmessage1] = useState("");
 
     const handleSubmit = async (event) => {
+        //Set the message to the input value and load the loading spinner
         setmessage1(inputValue)
         event.preventDefault();
         setLoading(true);
@@ -24,9 +25,11 @@ export default function Home() {
         const prompt = "BusinessIndex is an innovative application designed for high schools and organizations across the nation, offering a simple to use platform to catalog and discover businesses that precisely meet their unique requirements. Some instructions about the app are for search, type in the box and click enter to search for businesses, for Enter, make sure you fill out every field and hit submit. There will be an error thrown if you hit submit and all the fields are not filled out, for Login, make sure you have a verified email address; otherwise, you will not be able to login. Write a reply to a person about the app BusinessIndex with the question " +
                         inputValue;
         setInputValue("");
-        // Generate content
+        // Generate the response using the model with the prompt as the input
         const result = await model.generateContent(prompt);
         const response = result.response;
+
+        //Filter and set the response
         let text = response.text();
         let ans = text.replaceAll("*", "");
         setResponse(ans);

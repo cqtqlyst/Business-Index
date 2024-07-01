@@ -15,6 +15,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 export default function Home() {
   const [file, setFile] = useState(null);
 
+  //Update the .webp file when the user selects a file
   const handleFileChange = (e) => {
     if (e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -23,7 +24,7 @@ export default function Home() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    //Check if the user is logged in
     let form = document.getElementById("myForm");
     let inputs = form.getElementsByTagName("input");
 
@@ -61,10 +62,12 @@ export default function Home() {
         delete business[key];
       }
     }
-    
+
+    //Add the business to the database
     const nDoc = await addDoc(collection(db, "businesses"), business);
     console.log("Document written with ID: ", nDoc.id);
 
+    //Upload the file to the storage bucket
     if (file != null) {
       const fname = inputs[0].value.replace(/\s+/g, "").toLowerCase() + ".webp";
       console.log(fname);
