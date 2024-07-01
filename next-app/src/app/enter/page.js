@@ -13,6 +13,8 @@ import logoremovebg from "../../../public/logoremovebg.png";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function Home() {
+
+  // React hooks
   const [file, setFile] = useState(null);
 
   //Update the .webp file when the user selects a file

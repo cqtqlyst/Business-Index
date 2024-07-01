@@ -11,11 +11,11 @@ export default function Home() {
     const [inputValue, setInputValue] = useState('');
     const [response, setResponse] = useState("");
     const [loading, setLoading] = useState(false);
-    const [message1, setmessage1] = useState("");
+    const [message, setMessage] = useState("");
 
     const handleSubmit = async (event) => {
         //Set the message to the input value and load the loading spinner
-        setmessage1(inputValue)
+        setMessage(inputValue)
         event.preventDefault();
         setLoading(true);
         
@@ -57,7 +57,7 @@ export default function Home() {
                         { loading == true || response != ""  ? 
                         <div className="flex justify-end pt-10">
                             <div className="px-2 mb-2 pl-200">
-                            <p className="bg-purple-700 text-white rounded-lg py-2 px-4 inline-block">{message1}</p>
+                            <p className="bg-purple-700 text-white rounded-lg py-2 px-4 inline-block">{message}</p>
                         </div>
                     </div> : null}    
                     
@@ -95,14 +95,4 @@ export default function Home() {
         </div>
 
     );
-
-    // return (
-    //     <div>
-    //         <Nav/>
-    //         <p className="flex justify-center text-xl font-bold text-white py-20">For Search, type in the box and click enter to search for businesses.</p>
-    //         <p className="flex justify-center text-xl font-bold text-white py-20">For Enter, make sure you fill out every field and hit submit. There will be an error thrown if you hit submit and all the fields are not filled out.</p>
-    //         <p className="flex justify-center text-xl font-bold text-white py-20">For Login, make sure you have a verified email address; otherwise, you will not be able to login.</p>
-    //         <p className="flex justify-center text-xl font-bold text-white py-20">For any other questions/errors, contact BusinessIndex@gmail.com for all questions.</p>
-    //     </div>
-    // );
 }
