@@ -10,6 +10,7 @@ import Image from "next/image";
 import logoremovebg from "../../../public/logoremovebg.png";
 
 export default function Home() {
+  //Create a reference to the email and password
   const logemailRef = useRef();
   const logpasswordRef = useRef();
 
@@ -21,9 +22,10 @@ export default function Home() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        //Runs when the user is logged in
         const user = userCredential.user;
-
+        
+        //Allows for name display at the top of the page
         sessionStorage.setItem("useremail", user.displayName);
         console.log(sessionStorage.getItem("useremail"));
 

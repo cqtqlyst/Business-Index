@@ -27,9 +27,12 @@ export default function Home() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
+
+        // Update the user's name in to the db
         updateProfile(auth.currentUser, {
           displayName: name,
         });
+        //Redirect to the login page
         window.location.href = "/login";
       })
       .catch((error) => {

@@ -28,7 +28,7 @@ export default function Home() {
     let form = document.getElementById("myForm");
     let inputs = form.getElementsByTagName("input");
 
-    //Make sure the email is valid
+    //Make sure the email is valid using a regex
     let email = inputs[2].value;
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {

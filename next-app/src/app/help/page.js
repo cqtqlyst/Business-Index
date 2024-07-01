@@ -29,7 +29,7 @@ export default function Home() {
         const result = await model.generateContent(prompt);
         const response = result.response;
 
-        //Filter and set the response
+        //Filter and set the response to the correct variables
         let text = response.text();
         let ans = text.replaceAll("*", "");
         setResponse(ans);
