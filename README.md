@@ -84,7 +84,7 @@ const handleFileChange = (e) => {
 ```
 This section is linked to the image upload input in the jsx that is returned from the enter page. It uses a hook to handle the file upload.
 
-### Interaction System
+### AI Chat Bot
 
 ```javascript
 const handleSubmit = async (event) => {
