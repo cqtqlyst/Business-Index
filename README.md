@@ -6,10 +6,10 @@ BusinessIndex is an innovative application designed for schools and organization
 
 ## Features
 
-- **Financial Management**: Players make crucial decisions regarding spending, saving, and investing to manage their finances effectively.
-- **Interactive Scenarios**: Engage in scenarios that mimic real-life financial decisions and learn how to navigate them successfully.
-- **Investment Strategies**: Explore various investment options and understand the importance of portfolio diversification.
-- **Entrepreneurship**: Experience the journey of starting and growing a virtual business, learning valuable lessons about entrepreneurship along the way.
+- **Search**: Search for businesses in the database.
+- **Enter**: Enter a new business into BusinessIndex's database.
+- **Help**: Ask an AI chatbot to help you with using the app.
+- **Login/Sign-up**: Use the login/sign-up buttons to create a verified account.
 
 ## Installation Instructions
 
