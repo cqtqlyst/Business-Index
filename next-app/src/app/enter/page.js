@@ -27,6 +27,7 @@ export default function Home() {
     let form = document.getElementById("myForm");
     let inputs = form.getElementsByTagName("input");
 
+    //Make sure the email is valid
     let email = inputs[2].value;
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -35,6 +36,7 @@ export default function Home() {
     }
     let descriptionValue = document.getElementById("description-area").value
 
+    //Create a business object with optional fields
     let business = {
       Name: inputs[0].value,
       Description: descriptionValue,
@@ -52,13 +54,14 @@ export default function Home() {
       review: inputs[12].value,
       review_num: inputs[13].value,
     };
-
+    
+    //Remove empty fields
     for (const key in business) {
       if (!business[key]) {
         delete business[key];
       }
     }
-
+    
     const nDoc = await addDoc(collection(db, "businesses"), business);
     console.log("Document written with ID: ", nDoc.id);
 

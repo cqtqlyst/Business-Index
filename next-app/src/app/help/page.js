@@ -7,7 +7,7 @@ import {useState} from 'react';
 
 
 export default function Home() {
-
+    //Make a state for the input value
     const [inputValue, setInputValue] = useState('');
     const [response, setResponse] = useState("");
     const [loading, setLoading] = useState(false);
@@ -17,15 +17,14 @@ export default function Home() {
         setmessage1(inputValue)
         event.preventDefault();
         setLoading(true);
-        //delete the input value
         
-
+        //Use the generative model to generate a response
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
         const prompt = "BusinessIndex is an innovative application designed for high schools and organizations across the nation, offering a simple to use platform to catalog and discover businesses that precisely meet their unique requirements. Some instructions about the app are for search, type in the box and click enter to search for businesses, for Enter, make sure you fill out every field and hit submit. There will be an error thrown if you hit submit and all the fields are not filled out, for Login, make sure you have a verified email address; otherwise, you will not be able to login. Write a reply to a person about the app BusinessIndex with the question " +
                         inputValue;
         setInputValue("");
-        
+        // Generate content
         const result = await model.generateContent(prompt);
         const response = result.response;
         let text = response.text();

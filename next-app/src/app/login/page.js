@@ -15,7 +15,7 @@ export default function Home() {
 
   const login = (e) => {
     e.preventDefault();
-
+    //Get the email and password
     const email = logemailRef.current.value;
     const password = logpasswordRef.current.value;
 
@@ -25,10 +25,9 @@ export default function Home() {
         const user = userCredential.user;
 
         sessionStorage.setItem("useremail", user.displayName);
-        // ...
         console.log(sessionStorage.getItem("useremail"));
 
-        //router to next page
+        //Router to next page
         window.location.href = "/";
       })
       .catch((error) => {

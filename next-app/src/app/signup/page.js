@@ -27,7 +27,6 @@ export default function Home() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
-
         updateProfile(auth.currentUser, {
           displayName: name,
         });
