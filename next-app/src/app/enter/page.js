@@ -26,18 +26,6 @@ export default function Home() {
 
     let form = document.getElementById("myForm");
     let inputs = form.getElementsByTagName("input");
-    let empty = false;
-    for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].value == "") {
-        empty = true;
-      }
-    }
-    if (empty == true) {
-      alert(
-        "You are missing multiple fields to enter a business into the database!"
-      );
-      return;
-    }
 
     let email = inputs[2].value;
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -129,6 +117,10 @@ export default function Home() {
                     class="block mb-2 text-sm font-medium text-white"
                   >
                     Business Name
+                    <span style={{ fontSize: '1rem', color: 'red', marginLeft: '0.2rem' }}>* </span>
+                    <sup style={{ fontSize: '0.8rem', position: 'relative', top: '-0.2em', color: 'red' }}>
+                      (required)
+                    </sup>
                   </label>
                   <input
                     type="text"
@@ -142,11 +134,12 @@ export default function Home() {
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Description
+                    <span style={{ fontSize: '1rem', color: 'red', marginLeft: '0.2rem' }}>*</span>
                   </label>
                   <textarea
                     type="text"
                     id="description-area"
-                    rows="6"
+                    rows="7"
                     class="resize-none shadow-sm overflow-hidden bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2 focus:ring-4 focus:outline-none focus:ring-purple-900 focus:border-purple-900 block w-full placeholder-gray-400"
                   />
                 </div>
@@ -157,6 +150,7 @@ export default function Home() {
                     className="block mb-2 text-sm font-medium text-white"
                   >
                     Website Link
+                    <span style={{ fontSize: '1rem', color: 'red', marginLeft: '0.2rem' }}>*</span>
                   </label>
                   <input
                     type="url"
@@ -172,6 +166,7 @@ export default function Home() {
                     class="block mb-1 text-sm font-medium text-white"
                   >
                     Email Address
+                    <span style={{ fontSize: '1rem', color: 'red', marginLeft: '0.2rem' }}>*</span>
                   </label>
                   <input
                     type="email"
