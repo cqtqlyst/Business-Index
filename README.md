@@ -1,6 +1,6 @@
 # BusinessIndex: CAP 23-24
 
-This is the repository for the Homestead FBLA Coding and Programming project for the 2023-2024 school year. The team members are Aayush Gaywala (github username: cqtqlyst), Mihir Anantatheerta (github username: mihir-a), and Dan Iacob (github: MrBigBoss123). 
+This is the repository for the Homestead FBLA Coding and Programming project for the 2023-2024 school year. The team members are Aayush Gaywala (github username: cqtqlyst), Mihir Anantatheerta (github username: mihir-a), and Dan Iacob (github: MrBigBoss123). Alongside the presentation and speech, this project won 5th at the FBLA National Leadership Conference.
 
 BusinessIndex is an innovative application designed for schools and organizations across the nation. It is a simple to use platform that allows users to catalog and discover businesses that meet their unique requirements. It is complete with a search feature for businesses, an enter feature for new businesses, an AI chatbot, and a fully done login/sign-up system. It aims to aid our Career and Technical Education Department for 
 
