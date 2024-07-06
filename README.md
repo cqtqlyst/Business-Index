@@ -34,6 +34,8 @@ Ensure you are using node.js version 18.17.0 or higher.
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Lato, a custom Google Font.
 
+Make sure to plug in your own .env file or your own API keys to make the website work as intended.
+
 ## Certain Code Excerpts Explained
 
 We just chose some code excerpts to explain below. You can read all of the code as it is generally well-commented and readable with standard programming conventions.
