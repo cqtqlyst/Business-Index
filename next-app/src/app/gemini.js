@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey = 'AIzaSyBgf3W79Yk0NXOpnEj0LfOoeW7BmfD54mo';
+// replace with your own api keys or message the authors of the BusinessIndex repository for the .env file
+const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 export default genAI;

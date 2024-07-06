@@ -10,14 +10,16 @@ import { getStorage } from 'firebase/storage'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+// replace with your own api keys or message the authors of the BusinessIndex repository for the .env file
 const firebaseConfig = {
-    apiKey: "AIzaSyDLt2M0z3CGtg2OjNfGITJSaLa68d-0Qzc",
-    authDomain: "hhs-capv2.firebaseapp.com",
-    projectId: "hhs-capv2",
-    storageBucket: "hhs-capv2.appspot.com",
-    messagingSenderId: "602131782143",
-    appId: "1:602131782143:web:746e572e0aaf2a49f6afca",
-    measurementId: "G-X9GH6DYVLN"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
   };
 
 // Initialize Firebase
